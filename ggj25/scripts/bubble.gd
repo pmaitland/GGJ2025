@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Bubble extends CharacterBody2D
 
 
 const FRICTION = 0.985
