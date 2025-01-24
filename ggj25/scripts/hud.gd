@@ -1,18 +1,22 @@
 extends CanvasLayer
 
+@onready var countdown_message: Label = $CountdownMessage
+@onready var countdown_message_timer: Timer = $CountdownMessageTimer
+@onready var start_button: Button = $StartButton
+
 # Notifies `Main` node that the button has been pressed
 signal start_game
 
 
 func show_message(text: String) -> void:
-	$CountdownMessage.text = text
-	$CountdownMessage.show()
-	$CountdownMessageTimer.start()
+	countdown_message.text = text
+	countdown_message.show()
+	countdown_message_timer.start()
 
 func show_game_over() -> void:
 	show_message("Game Over")
 	# Wait until the CountdownMessageTimer has counted down.
-	await $CountdownMessageTimer.timeout
+	await countdown_message_timer.timeout
 
 func show_game_start() -> void:
 	show_message("Get Ready!")
@@ -29,10 +33,10 @@ func show_game_start() -> void:
 	hide_start_button()
 
 func hide_message() -> void:
-	$CountdownMessage.hide()
+	countdown_message.hide()
 
 func hide_start_button() -> void:
-	$StartButton.hide()
+	start_button.hide()
 
 func _on_start_button_pressed() -> void:
 	start_game.emit()

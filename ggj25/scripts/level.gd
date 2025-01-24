@@ -1,7 +1,9 @@
 extends Node2D
 
+@onready var hud: CanvasLayer = $Hud
+
 func new_game() -> void:
-	$Hud.show_game_start()
+	hud.show_game_start()
 	pass
 
 # Called when the node enters the scene tree for the first time.
