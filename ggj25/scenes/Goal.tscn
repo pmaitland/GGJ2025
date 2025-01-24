@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bioxevgxmkxd5"]
+
+[ext_resource type="Script" path="res://scripts/goal.gd" id="1_h841x"]
+[ext_resource type="Texture2D" uid="uid://df1501u53kx8s" path="res://sprites/bath.png" id="2_brsqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3pd6c"]
+size = Vector2(68, 60)
+
+[node name="Goal" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_h841x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.499998)
+scale = Vector2(0.390805, 0.324176)
+texture = ExtResource("2_brsqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3pd6c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
