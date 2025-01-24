@@ -9,7 +9,7 @@ func blow(from: Transform2D, force: float) -> void:
 	velocity += direction * force
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	velocity *= FRICTION
 	
