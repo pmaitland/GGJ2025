@@ -18,6 +18,7 @@ var current_direction = Direction.DOWN
 
 func _ready() -> void:
 	sprite.texture = sprites[0]
+	sprite.modulate = Color(randf(), randf(), randf())
 
 
 func _physics_process(_delta: float) -> void:
