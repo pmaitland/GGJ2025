@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const friction = 1
+const FRICTION = 0.985
 
 
 func blow(from: Transform2D, force: float) -> void:
@@ -9,10 +9,8 @@ func blow(from: Transform2D, force: float) -> void:
 	velocity += direction * force
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
-	velocity.x = move_toward(velocity.x, 0, friction)
-	velocity.y = move_toward(velocity.y, 0, friction)
+	velocity *= FRICTION
 	
 	move_and_slide()
-	
