@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnfisykkl2cb6"]
+[gd_scene load_steps=12 format=3 uid="uid://bnfisykkl2cb6"]
 
-[ext_resource type="Script" path="res://scripts/Player.gd" id="1_x1n4u"]
-[ext_resource type="Texture2D" uid="uid://d3yrwn65n6did" path="res://sprites/duck.png" id="2_wha4i"]
+[ext_resource type="Script" path="res://scripts/duck.gd" id="1_x1n4u"]
+[ext_resource type="Texture2D" uid="uid://bs357sc677330" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
+[ext_resource type="Texture2D" uid="uid://bebh6kf6i8ont" path="res://sprites/duck/duck1.png" id="3_n6wtr"]
+[ext_resource type="Texture2D" uid="uid://bcvcpqmgr4ri4" path="res://sprites/duck/duck2.png" id="4_p8rtf"]
+[ext_resource type="Texture2D" uid="uid://b5uy3x7rmhim0" path="res://sprites/duck/duck3.png" id="5_2xgx4"]
+[ext_resource type="Texture2D" uid="uid://6pp2sksjnfqe" path="res://sprites/duck/duck4.png" id="6_jmdef"]
+[ext_resource type="Texture2D" uid="uid://cmhbsoomv3njq" path="res://sprites/duck/duck5.png" id="7_5b0ea"]
+[ext_resource type="Texture2D" uid="uid://ce74cy1ntjssf" path="res://sprites/duck/duck6.png" id="8_x2q5v"]
+[ext_resource type="Texture2D" uid="uid://dnm4jxswn1ya4" path="res://sprites/duck/duck7.png" id="9_0sns0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yihvp"]
 
@@ -9,11 +16,11 @@
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_x1n4u")
+sprites = Array[Texture2D]([ExtResource("2_hmvlq"), ExtResource("3_n6wtr"), ExtResource("4_p8rtf"), ExtResource("5_2xgx4"), ExtResource("6_jmdef"), ExtResource("7_5b0ea"), ExtResource("8_x2q5v"), ExtResource("9_0sns0")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.499996, -0.500004)
 scale = Vector2(0.0848214, 0.0848214)
-texture = ExtResource("2_wha4i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yihvp")
