@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnfisykkl2cb6"]
+[gd_scene load_steps=5 format=3 uid="uid://bnfisykkl2cb6"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_x1n4u"]
 [ext_resource type="Texture2D" uid="uid://d3yrwn65n6did" path="res://sprites/duck.png" id="2_wha4i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yihvp"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_cyk58"]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_x1n4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.499996, -0.500004)
+scale = Vector2(0.0848214, 0.0848214)
+texture = ExtResource("2_wha4i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yihvp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wha4i")
+[node name="BlowHitbox" type="ShapeCast2D" parent="."]
+scale = Vector2(5, 5)
+shape = SubResource("CircleShape2D_cyk58")
+target_position = Vector2(0, 0)
+collision_mask = 2
