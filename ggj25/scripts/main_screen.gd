@@ -13,4 +13,4 @@ func _on_controls_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	pass # Replace with function body.
+	SceneManager.go_to_scene("res://scenes/SettingsScreen.tscn")
