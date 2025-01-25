@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxcpb31qgji08"]
+[gd_scene load_steps=8 format=3 uid="uid://bxcpb31qgji08"]
 
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="1_40w4y"]
 [ext_resource type="Script" path="res://scripts/bubball.gd" id="1_pxbye"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="2_lkvlj"]
 [ext_resource type="PackedScene" uid="uid://bioxevgxmkxd5" path="res://scenes/Goal.tscn" id="4_mjrpk"]
 [ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="5_q1ckn"]
-[ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/BubbleSpawner.tscn" id="7_onqcw"]
 [ext_resource type="AudioStream" uid="uid://ob8hhxoeng52" path="res://sounds/bathtime.wav" id="7_u18ih"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u41tq"]
@@ -82,9 +81,6 @@ position = Vector2(772, 482)
 player_id = 3
 
 [node name="GameTimer" type="Timer" parent="."]
-
-[node name="BubbleSpawner" parent="." instance=ExtResource("7_onqcw")]
-position = Vector2(476, 313)
 
 [connection signal="bubble_collected" from="RightGoal" to="." method="_on_right_goal_bubble_collected"]
 [connection signal="start_game" from="Hud" to="." method="_on_hud_start_game"]

@@ -25,7 +25,6 @@ var is_dashing = false
 var dash_available = true
 var last_direction = Vector2.DOWN
 
-var blow_controller_pressed = false
 var dash_controller_pressed = false
 
 var current_direction = Direction.DOWN
@@ -62,7 +61,6 @@ func is_controller():
 
 
 func _process(delta: float) -> void:
-	if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) <= 0.3: blow_controller_pressed = false
 	if !Input.is_joy_button_pressed(player_id, JOY_BUTTON_A): dash_controller_pressed = false
 	
 
@@ -80,8 +78,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if is_controller():
-		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3 and !blow_controller_pressed: 
-			blow_controller_pressed = true
+		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3 or Input.is_joy_button_pressed(player_id, JOY_BUTTON_B): 
 			blow()
 	else:
 		if Input.is_action_pressed("p%s_blow" % player_id):

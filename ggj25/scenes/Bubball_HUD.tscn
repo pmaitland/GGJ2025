@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6wg2fhghhum0"]
+[gd_scene load_steps=2 format=3 uid="uid://crq1dv00bhbu4"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_b2j7g"]
 
-[node name="Hud" type="CanvasLayer"]
+[node name="Bubball_HUD" type="CanvasLayer"]
 script = ExtResource("1_b2j7g")
 
 [node name="CountdownMessage" type="Label" parent="."]
@@ -41,10 +41,11 @@ theme_override_font_sizes/font_size = 48
 text = "0"
 
 [node name="Timer" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
-text = "Timer"
+text = "1.10"
 horizontal_alignment = 1
 
 [node name="RightScore" type="Label" parent="MarginContainer/HBoxContainer"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n2svyvflvb2q"
-path="res://.godot/imported/duck7.png-18fec8ef3e3bcb7a4c4ef650e2049109.ctex"
+uid="uid://d2hn27n15mm6o"
+path="res://.godot/imported/Bubble_0003.png-0b4cdd4668200a5c3637c3de7f0c1969.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/duck/duck7.png"
-dest_files=["res://.godot/imported/duck7.png-18fec8ef3e3bcb7a4c4ef650e2049109.ctex"]
+source_file="res://sprites/bubble/Bubble_0003.png"
+dest_files=["res://.godot/imported/Bubble_0003.png-0b4cdd4668200a5c3637c3de7f0c1969.ctex"]
 
 [params]
 

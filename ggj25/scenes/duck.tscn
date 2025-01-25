@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=3 uid="uid://bnfisykkl2cb6"]
 
 [ext_resource type="Script" path="res://scripts/duck.gd" id="1_x1n4u"]
-[ext_resource type="Texture2D" uid="uid://bs357sc677330" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
-[ext_resource type="Texture2D" uid="uid://bebh6kf6i8ont" path="res://sprites/duck/duck1.png" id="3_n6wtr"]
-[ext_resource type="Texture2D" uid="uid://bcvcpqmgr4ri4" path="res://sprites/duck/duck2.png" id="4_p8rtf"]
-[ext_resource type="Texture2D" uid="uid://b5uy3x7rmhim0" path="res://sprites/duck/duck3.png" id="5_2xgx4"]
-[ext_resource type="Texture2D" uid="uid://6pp2sksjnfqe" path="res://sprites/duck/duck4.png" id="6_jmdef"]
-[ext_resource type="Texture2D" uid="uid://cmhbsoomv3njq" path="res://sprites/duck/duck5.png" id="7_5b0ea"]
-[ext_resource type="Texture2D" uid="uid://ce74cy1ntjssf" path="res://sprites/duck/duck6.png" id="8_x2q5v"]
-[ext_resource type="Texture2D" uid="uid://dnm4jxswn1ya4" path="res://sprites/duck/duck7.png" id="9_0sns0"]
+[ext_resource type="Texture2D" uid="uid://cc8b34nnsxb8j" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
+[ext_resource type="Texture2D" uid="uid://bg03fuc1dpl2k" path="res://sprites/duck/duck1.png" id="3_n6wtr"]
+[ext_resource type="Texture2D" uid="uid://h4qs1b1gs371" path="res://sprites/duck/duck2.png" id="4_p8rtf"]
+[ext_resource type="Texture2D" uid="uid://d2n6iiytm76bc" path="res://sprites/duck/duck3.png" id="5_2xgx4"]
+[ext_resource type="Texture2D" uid="uid://clxb81y0fxuq3" path="res://sprites/duck/duck4.png" id="6_jmdef"]
+[ext_resource type="Texture2D" uid="uid://5q81t0e5ahkx" path="res://sprites/duck/duck5.png" id="7_5b0ea"]
+[ext_resource type="Texture2D" uid="uid://bh03b45b1ltkb" path="res://sprites/duck/duck6.png" id="8_x2q5v"]
+[ext_resource type="Texture2D" uid="uid://n2svyvflvb2q" path="res://sprites/duck/duck7.png" id="9_0sns0"]
 [ext_resource type="AudioStream" uid="uid://doxtltyi27w0n" path="res://sounds/quack.wav" id="10_qaxuo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yihvp"]
@@ -24,13 +24,15 @@ sprites = Array[Texture2D]([ExtResource("2_hmvlq"), ExtResource("3_n6wtr"), ExtR
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(-0.499996, -0.500004)
-scale = Vector2(0.12, 0.12)
+scale = Vector2(0.225, 0.225)
+texture = ExtResource("2_hmvlq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.615, 2.615)
 shape = SubResource("CircleShape2D_yihvp")
 
 [node name="BlowHitbox" type="ShapeCast2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(6.74, 6.74)
 shape = SubResource("CircleShape2D_cyk58")
 target_position = Vector2(0, 0)
 collision_mask = 2

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqxe56iguvs7r"]
+
+[ext_resource type="Script" path="res://scripts/bubble_spawner.gd" id="1_4obwi"]
+[ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="2_wxefk"]
+
+[node name="BubbleSpawner" type="Node2D"]
+script = ExtResource("1_4obwi")
+bubble_scene = ExtResource("2_wxefk")
+spawn_delay = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

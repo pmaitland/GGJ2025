@@ -1,9 +1,9 @@
 class_name Hud extends CanvasLayer
 
 #UI
-@onready var left_score: Label = $HBoxContainer/LeftScore
-@onready var right_score: Label = $HBoxContainer/RightScore
-@onready var game_timer: Label = $HBoxContainer/Timer
+@onready var left_score: Label = $MarginContainer/HBoxContainer/LeftScore
+@onready var right_score: Label = $MarginContainer/HBoxContainer/RightScore
+@onready var game_timer: Label = $MarginContainer/HBoxContainer/Timer
 @onready var countdown_message: Label = $CountdownMessage
 #Buttons
 @onready var start_button: Button = $StartButton
@@ -12,6 +12,11 @@ class_name Hud extends CanvasLayer
 @onready var controls: Button = $MarginContainer2/GamePauseButtons/Controls
 @onready var settings: Button = $MarginContainer2/GamePauseButtons/Settings
 @onready var exit: Button = $MarginContainer2/GamePauseButtons/Exit
+
+
+@onready var game_start_buttons: VBoxContainer = $MarginContainer2/GameStartButtons
+@onready var game_end_buttons: VBoxContainer = $MarginContainer2/GameEndButtons
+@onready var game_pause_buttons: VBoxContainer = $MarginContainer2/GamePauseButtons
 
 
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
@@ -23,8 +28,15 @@ func show_message(text: String) -> void:
 	countdown_message.text = text
 	countdown_message.show()
 
+func setup_game() -> void:
+	left_score.text = "0"
+	right_score.text = "0"
+	game_timer.modulate = Color(1, 1, 1, 1)
+	game_start_buttons.show()
+	game_end_buttons.hide()
+	game_pause_buttons.hide()
+
 func show_game_start() -> void:
-	start_button.show()
 	show_message("Get Ready!")
 	await get_tree().create_timer(1.0).timeout
 	show_message("3")
@@ -36,7 +48,7 @@ func show_game_start() -> void:
 	show_message("Go!")
 	await get_tree().create_timer(1.0).timeout
 	hide_message()
-	hide_start_button()
+	game_start_buttons.hide()
 	start_game.emit()
 	audio_stream_player.play()
 
@@ -45,17 +57,13 @@ func show_game_pause() -> void:
 	right_score.modulate.a = 0.75
 	game_timer.modulate.a = 0.75
 	show_message("Game Paused")
-	controls.show()
-	settings.show()
-	exit.show()
+	game_pause_buttons.show()
 
 func hide_game_pause() -> void:
 	left_score.modulate.a = 1
 	right_score.modulate.a = 1
 	game_timer.modulate.a = 1
-	controls.hide()
-	settings.hide()
-	exit.hide()
+	game_pause_buttons.hide()
 	hide_message()
 
 func show_game_end(win_team: int) -> void:
@@ -63,14 +71,10 @@ func show_game_end(win_team: int) -> void:
 	show_message("Finish!")
 	await get_tree().create_timer(1.0).timeout
 	show_message("Team " + str(win_team) + " Wins!")
-	retry_button.show()
-	main_menu_button.show()
+	game_end_buttons.show()
 
 func hide_message() -> void:
 	countdown_message.hide()
-
-func hide_start_button() -> void:
-	start_button.hide()
 
 func set_left_score(score: int) -> void:
 	left_score.text = str(score)
@@ -82,7 +86,7 @@ func set_timer(time: String) -> void:
 	game_timer.text = time
 
 func _on_start_button_pressed() -> void:
-	hide_start_button()
+	game_start_buttons.hide()
 	show_game_start()
 
 func _on_exit_pressed() -> void:
@@ -94,7 +98,7 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_retry_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/bubbal_game.tscn")
 
 
 func _on_controls_pressed() -> void:

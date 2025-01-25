@@ -2,8 +2,9 @@ extends Node2D
 
 @onready var game_timer: Timer = $GameTimer
 @onready var hud: Hud = $Hud
+@onready var bubble_spawner: BubbleSpawner = $BubbleSpawner
 
-const GAME_TIME = 60
+const GAME_TIME = 10#60
 var started = false
 
 var left_team_score = 0
@@ -15,10 +16,12 @@ func _on_hud_start_game() -> void:
 	started = true
 	enable_duck_input(true)
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	game_timer.wait_time = GAME_TIME
 	hud.set_timer(str(GAME_TIME))
+	hud.setup_game()
 	enable_duck_input(false)
 	
 
@@ -37,24 +40,33 @@ func format_timer(time_left: float) -> String:
 	return str(ceil(time_left))
 
 
-
 func _on_game_timer_timeout() -> void:
-	# NOEL ADD END GAME STUFF HERE PLZ
-	
-	print('Game finished!')
-	enable_duck_input(false)
-	hud.set_timer("0")
-	started = false
+	if started:
+		print('Game finished!')
+		enable_duck_input(false)
+		hud.set_timer("0")
+		started = false
+		hud.show_game_end(get_winning_team())
 
+
+func get_winning_team() -> int:
+	if left_team_score > right_team_score:
+		return 1
+	elif right_team_score > left_team_score:
+		return 2
+	else:
+		return 0
 
 func _on_left_goal_bubble_collected(team_id: int) -> void:
 	if started:
 		right_team_score += 1
+		bubble_spawner.spawn_bubble()
 
 
 func _on_right_goal_bubble_collected(team_id: int) -> void:
 	if started:
 		left_team_score += 1
+		bubble_spawner.spawn_bubble()
 
 func enable_duck_input(enable, node: Node = self):	
 	if node is Duck:
