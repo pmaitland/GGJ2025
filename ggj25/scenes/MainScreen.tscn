@@ -20,6 +20,7 @@ offset_top = 274.0
 offset_right = 427.0
 offset_bottom = 375.0
 grow_vertical = 2
+theme_override_constants/separation = 10
 
 [node name="GameMode" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -38,17 +39,24 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 170.0
-offset_top = -89.0
-offset_right = 210.0
-offset_bottom = -49.0
+offset_left = 112.0
+offset_top = -127.0
+offset_right = 3277.0
+offset_bottom = 1234.0
 grow_vertical = 0
+scale = Vector2(0.07, 0.07)
+theme_override_constants/separation = 500
 
-[node name="GGJ" type="Sprite2D" parent="Logos"]
-scale = Vector2(0.2, 0.2)
+[node name="GGJ" type="TextureRect" parent="Logos"]
+layout_mode = 2
 texture = ExtResource("1_tdyj2")
+expand_mode = 2
+stretch_mode = 5
 
-[node name="DSG" type="Sprite2D" parent="Logos"]
-position = Vector2(285, 0)
-scale = Vector2(0.075, 0.075)
+[node name="DSG" type="TextureRect" parent="Logos"]
+layout_mode = 2
 texture = ExtResource("2_ur20e")
+expand_mode = 2
+stretch_mode = 5
+
+[connection signal="pressed" from="VBoxContainer/GameMode" to="." method="_on_game_mode_pressed"]
