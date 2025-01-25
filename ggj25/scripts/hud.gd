@@ -1,9 +1,9 @@
 class_name Hud extends CanvasLayer
 
 #UI
-@onready var left_score: Label = $HBoxContainer/LeftScore
-@onready var right_score: Label = $HBoxContainer/RightScore
-@onready var game_timer: Label = $HBoxContainer/Timer
+@onready var left_score: Label = $MarginContainer/HBoxContainer/LeftScore
+@onready var right_score: Label = $MarginContainer/HBoxContainer/RightScore
+@onready var game_timer: Label = $MarginContainer/HBoxContainer/Timer
 @onready var countdown_message: Label = $CountdownMessage
 #Buttons
 @onready var start_button: Button = $StartButton

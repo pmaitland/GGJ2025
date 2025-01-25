@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://broapjp7o6u2h"]
+
+[ext_resource type="Script" path="res://scripts/bubble_spawner.gd" id="1_4obwi"]
+
+[node name="BubbleSpawner" type="Node"]
+script = ExtResource("1_4obwi")
