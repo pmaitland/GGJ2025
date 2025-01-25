@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/bubball.gd" id="1_pxbye"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="2_lkvlj"]
 [ext_resource type="PackedScene" uid="uid://bioxevgxmkxd5" path="res://scenes/Goal.tscn" id="4_mjrpk"]
-[ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="5_q1ckn"]
-[ext_resource type="PackedScene" uid="uid://broapjp7o6u2h" path="res://scenes/BubbleSpawner.tscn" id="7_onqcw"]
+[ext_resource type="PackedScene" path="res://scenes/Bubball_HUD.tscn" id="5_q1ckn"]
+[ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/BubbleSpawner.tscn" id="7_onqcw"]
 [ext_resource type="AudioStream" uid="uid://ob8hhxoeng52" path="res://sounds/bathtime.wav" id="7_u18ih"]
 [ext_resource type="PackedScene" uid="uid://uw7eanu26b61" path="res://scenes/Obstacle.tscn" id="8_mrirq"]
 
@@ -85,8 +85,7 @@ player_id = 3
 [node name="GameTimer" type="Timer" parent="."]
 
 [node name="BubbleSpawner" parent="." instance=ExtResource("7_onqcw")]
-position = Vector2(474, 176)
-spawn_mode = 1
+position = Vector2(476, 313)
 
 [node name="Obstacle" parent="." instance=ExtResource("8_mrirq")]
 position = Vector2(593, 115)

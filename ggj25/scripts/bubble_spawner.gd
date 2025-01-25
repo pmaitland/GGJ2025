@@ -1,4 +1,4 @@
-extends Node2D
+class_name BubbleSpawner extends Node2D
 
 @onready var timer: Timer = $Timer
 @export var bubble_scene: PackedScene
@@ -10,6 +10,8 @@ enum SPAWNER_TYPE { MANUAL, TIMER }
 
 func spawn_bubble():
 	var bubble: Bubble = bubble_scene.instantiate()
+	bubble.position = global_position
+	get_tree().root.add_child(bubble)
 
 
 func _ready() -> void:
