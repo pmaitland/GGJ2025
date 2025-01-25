@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Duck extends CharacterBody2D
 
 
 @onready var blow_hitbox: ShapeCast2D = $BlowHitbox
@@ -10,6 +10,8 @@ extends CharacterBody2D
 enum Direction { DOWN, DOWN_LEFT, LEFT, UP_LEFT, UP, UP_RIGHT, RIGHT, DOWN_RIGHT }
 const SPEED = 200.0
 const BLOW_FORCE = 20
+
+var input_enabled = true
 
 
 var current_direction = Direction.DOWN
@@ -33,11 +35,17 @@ func with_deadzone(vector: Vector2, deadzone: float = 0.3) -> Vector2:
 	return vector
 
 
+func set_input_enabled(enabled: bool):
+	input_enabled = enabled
+
+
 func is_controller():
 	return player_id in Input.get_connected_joypads()
 
 
 func _physics_process(_delta: float) -> void:
+	if (!input_enabled): return
+	
 	if is_controller():
 		velocity = with_deadzone(Vector2(Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X), Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)))
 	else:
