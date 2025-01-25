@@ -19,7 +19,7 @@ var input_enabled = true
 
 const DASH_DURATION = 0.07
 const DASH_SPEED = SPEED * 5
-const DASH_COOLDOWN = 2.5
+const DASH_COOLDOWN = 0.5
 const DASH_ACCELERATION = ACCELERATION * 20
 var is_dashing = false
 var dash_available = true
@@ -69,7 +69,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if is_controller():
-		if Input.is_joy_button_pressed(player_id, JOY_BUTTON_A):
+		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3:
 			blow()
 	else:
 		if Input.is_action_pressed("p%s_blow" % player_id):
@@ -77,7 +77,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if is_controller():
-		if Input.is_joy_button_pressed(player_id, JOY_BUTTON_B):
+		if Input.is_joy_button_pressed(player_id, JOY_BUTTON_A):
 			dash()
 	else:
 		if Input.is_action_just_pressed("p%s_dash" % player_id):
@@ -132,7 +132,7 @@ func blow() -> void:
 		for i in range(blow_hitbox.get_collision_count()):
 			var hit = blow_hitbox.get_collider(i)
 			if "name" in hit:
-				print('blowing ', hit.name)
+				pass
 			if hit and hit.has_method("blow"):
 				hit.call("blow", global_transform, BLOW_FORCE)
 
