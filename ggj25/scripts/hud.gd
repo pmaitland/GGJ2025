@@ -35,8 +35,8 @@ func hide_start_button() -> void:
 
 func _on_start_button_pressed() -> void:
 	hide_start_button()
-	start_game.emit()
 	show_game_start()
+	start_game.emit()
 
 func set_left_score(score: int) -> void:
 	left_score.text = str(score)
