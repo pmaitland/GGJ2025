@@ -60,3 +60,5 @@ expand_mode = 2
 stretch_mode = 5
 
 [connection signal="pressed" from="VBoxContainer/GameMode" to="." method="_on_game_mode_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
