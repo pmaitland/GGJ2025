@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfr8l7jr3ux3b"]
+[gd_scene load_steps=4 format=3 uid="uid://uw7eanu26b61"]
 
 [ext_resource type="Script" path="res://scripts/obstacle.gd" id="1_61hwa"]
 [ext_resource type="Texture2D" uid="uid://c80qql6sxnne1" path="res://sprites/obstacle.png" id="2_grici"]
