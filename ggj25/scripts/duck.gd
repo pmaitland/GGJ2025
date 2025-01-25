@@ -88,6 +88,6 @@ func blow() -> void:
 		for i in range(blow_hitbox.get_collision_count()):
 			var hit = blow_hitbox.get_collider(i)
 			if "name" in hit:
-				print('hit ', hit.name)
+				print('blowing ', hit.name)
 			if hit and hit.has_method("blow"):
 				hit.call("blow", global_transform, BLOW_FORCE)

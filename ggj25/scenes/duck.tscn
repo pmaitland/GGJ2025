@@ -15,10 +15,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyk58"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 5
 script = ExtResource("1_x1n4u")
 sprites = Array[Texture2D]([ExtResource("2_hmvlq"), ExtResource("3_n6wtr"), ExtResource("4_p8rtf"), ExtResource("5_2xgx4"), ExtResource("6_jmdef"), ExtResource("7_5b0ea"), ExtResource("8_x2q5v"), ExtResource("9_0sns0")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(-0.499996, -0.500004)
 scale = Vector2(0.12, 0.12)
 
