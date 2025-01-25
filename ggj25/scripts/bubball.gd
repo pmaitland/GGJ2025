@@ -19,6 +19,7 @@ func _on_hud_start_game() -> void:
 func _ready() -> void:
 	game_timer.wait_time = GAME_TIME
 	hud.set_timer(str(GAME_TIME))
+	hud.setup_game()
 	enable_duck_input(false)
 	
 
@@ -39,13 +40,20 @@ func format_timer(time_left: float) -> String:
 
 
 func _on_game_timer_timeout() -> void:
-	# NOEL ADD END GAME STUFF HERE PLZ
-	
 	print('Game finished!')
 	enable_duck_input(false)
 	hud.set_timer("0")
 	started = false
+	hud.show_game_end(get_winning_team())
 
+
+func get_winning_team() -> int:
+	if left_team_score > right_team_score:
+		return 1
+	elif right_team_score > left_team_score:
+		return 2
+	else:
+		return 0
 
 func _on_left_goal_bubble_collected(team_id: int) -> void:
 	if started:
