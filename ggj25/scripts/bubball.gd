@@ -4,7 +4,7 @@ extends Node2D
 @onready var hud: Hud = $Hud
 @onready var bubble_spawner: BubbleSpawner = $BubbleSpawner
 
-const GAME_TIME = 60
+const GAME_TIME = 10#60
 var started = false
 
 var left_team_score = 0
