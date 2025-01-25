@@ -76,7 +76,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if is_controller():
-		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3: 
+		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3 or Input.is_joy_button_pressed(player_id, JOY_BUTTON_B): 
 			blow()
 	else:
 		if Input.is_action_pressed("p%s_blow" % player_id):
