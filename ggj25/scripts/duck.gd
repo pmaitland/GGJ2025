@@ -25,6 +25,8 @@ var is_dashing = false
 var dash_available = true
 var last_direction = Vector2.DOWN
 
+var blow_controller_pressed = false
+var dash_controller_pressed = false
 
 var current_direction = Direction.DOWN
 
@@ -55,6 +57,11 @@ func is_controller():
 	return player_id in Input.get_connected_joypads()
 
 
+func _process(delta: float) -> void:
+	if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) <= 0.3: blow_controller_pressed = false
+	if !Input.is_joy_button_pressed(player_id, JOY_BUTTON_A): dash_controller_pressed = false
+	
+
 func _physics_process(_delta: float) -> void:
 	if (!input_enabled): return
 
@@ -69,7 +76,8 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if is_controller():
-		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3:
+		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3 and !blow_controller_pressed: 
+			blow_controller_pressed = true
 			blow()
 	else:
 		if Input.is_action_pressed("p%s_blow" % player_id):
@@ -77,7 +85,8 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if is_controller():
-		if Input.is_joy_button_pressed(player_id, JOY_BUTTON_A):
+		if Input.is_joy_button_pressed(player_id, JOY_BUTTON_A) and !dash_controller_pressed:
+			dash_controller_pressed = true
 			dash()
 	else:
 		if Input.is_action_just_pressed("p%s_dash" % player_id):
