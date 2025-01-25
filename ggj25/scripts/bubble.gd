@@ -1,8 +1,15 @@
 class_name Bubble extends CharacterBody2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 const FRICTION = 0.985
 const BOUNCE_SCALE = 0.8
+
+
+func _ready() -> void:
+	animated_sprite_2d.play("default")
+	animated_sprite_2d.modulate = Color8(135, 224, 237)
+
 
 func blow(from: Transform2D, force: float) -> void:
 	var direction = (global_transform.origin - from.origin).normalized()
@@ -19,7 +26,9 @@ func _physics_process(delta: float) -> void:
 
 
 func pop():
-	# play pop animation then delete
+	animated_sprite_2d.play("pop")
+	velocity = Vector2.ZERO
+	await get_tree().create_timer(5.0).timeout
 	queue_free()
 
 func collect():
