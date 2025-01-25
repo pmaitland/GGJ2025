@@ -3,10 +3,11 @@ extends CanvasLayer
 @onready var countdown_message: Label = $CountdownMessage
 @onready var countdown_message_timer: Timer = $CountdownMessageTimer
 @onready var start_button: Button = $StartButton
+@onready var left_score: Label = $HBoxContainer/LeftScore
+@onready var right_score: Label = $HBoxContainer/RightScore
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
-
 
 func show_message(text: String) -> void:
 	countdown_message.text = text
@@ -39,15 +40,13 @@ func hide_start_button() -> void:
 	start_button.hide()
 
 func _on_start_button_pressed() -> void:
+	hide_start_button()
 	start_game.emit()
 	show_game_start()
 
+func set_left_score(score: int) -> void:
+	left_score.text = str(score)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func set_right_score(score: int) -> void:
+	right_score.text = str(score)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
