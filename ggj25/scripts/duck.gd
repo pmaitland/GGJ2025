@@ -38,6 +38,8 @@ const COLOURS = [
 ]
 
 func _ready() -> void:
+	if (player_id >= 2 and !is_controller()):
+		queue_free()
 	sprite.texture = sprites[0]
 	sprite.modulate = COLOURS[player_id]
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
