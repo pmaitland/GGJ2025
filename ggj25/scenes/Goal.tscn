@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bioxevgxmkxd5"]
+[gd_scene load_steps=4 format=3 uid="uid://boymnx5a08bl2"]
 
 [ext_resource type="Script" path="res://scripts/goal.gd" id="1_h841x"]
 [ext_resource type="Texture2D" uid="uid://df1501u53kx8s" path="res://sprites/bath.png" id="2_brsqu"]
