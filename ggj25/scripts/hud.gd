@@ -31,6 +31,7 @@ func show_message(text: String) -> void:
 func setup_game() -> void:
 	left_score.text = "0"
 	right_score.text = "0"
+	game_timer.modulate = Color(1, 1, 1, 1)
 	game_start_buttons.show()
 	game_end_buttons.hide()
 	game_pause_buttons.hide()
