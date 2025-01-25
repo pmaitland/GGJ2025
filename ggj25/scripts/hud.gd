@@ -98,7 +98,7 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_retry_button_pressed() -> void:
-	setup_game()
+	get_tree().reload_current_scene()
 
 
 func _on_controls_pressed() -> void:

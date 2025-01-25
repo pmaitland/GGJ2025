@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var game_timer: Timer = $GameTimer
 @onready var hud: Hud = $Hud
+@onready var bubble_spawner: BubbleSpawner = $BubbleSpawner
 
 const GAME_TIME = 60
 var started = false
@@ -14,6 +15,7 @@ func _on_hud_start_game() -> void:
 	game_timer.start(GAME_TIME)
 	started = true
 	enable_duck_input(true)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,11 +60,13 @@ func get_winning_team() -> int:
 func _on_left_goal_bubble_collected(team_id: int) -> void:
 	if started:
 		right_team_score += 1
+		bubble_spawner.spawn_bubble()
 
 
 func _on_right_goal_bubble_collected(team_id: int) -> void:
 	if started:
 		left_team_score += 1
+		bubble_spawner.spawn_bubble()
 
 func enable_duck_input(enable, node: Node = self):	
 	if node is Duck:
