@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name Hud extends CanvasLayer
 
 @onready var countdown_message: Label = $CountdownMessage
 @onready var start_button: Button = $StartButton

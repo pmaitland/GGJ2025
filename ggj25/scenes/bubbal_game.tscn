@@ -1,18 +1,18 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxcpb31qgji08"]
 
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="1_40w4y"]
-[ext_resource type="Script" path="res://scripts/level.gd" id="1_b032h"]
+[ext_resource type="Script" path="res://scripts/bubball.gd" id="1_pxbye"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="2_lkvlj"]
 [ext_resource type="PackedScene" uid="uid://bioxevgxmkxd5" path="res://scenes/Goal.tscn" id="4_mjrpk"]
-[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="5_jgjwp"]
-[ext_resource type="PackedScene" uid="uid://cfr8l7jr3ux3b" path="res://scenes/Obstacle.tscn" id="6_lll7i"]
+[ext_resource type="PackedScene" uid="uid://c6wg2fhghhum0" path="res://scenes/HUD.tscn" id="5_jgjwp"]
+[ext_resource type="PackedScene" path="res://scenes/Obstacle.tscn" id="6_lll7i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u41tq"]
 distance = 30.25
 
-[node name="Node2D" type="Node2D"]
+[node name="Bubball Game" type="Node2D"]
 position = Vector2(101, 59)
-script = ExtResource("1_b032h")
+script = ExtResource("1_pxbye")
 
 [node name="duck1" parent="." instance=ExtResource("1_40w4y")]
 position = Vector2(94, 262)
@@ -77,4 +77,8 @@ shape = SubResource("WorldBoundaryShape2D_u41tq")
 [node name="Obstacle" parent="." instance=ExtResource("6_lll7i")]
 position = Vector2(293, 172)
 
-[connection signal="start_game" from="Hud" to="." method="new_game"]
+[node name="GameTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="start_game" from="Hud" to="." method="_on_hud_start_game"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
