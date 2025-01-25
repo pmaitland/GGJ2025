@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1jn5x64l5q8v"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_2m6g8"]
-[ext_resource type="Texture2D" uid="uid://dkyfgtlod01nr" path="res://sprites/bubble.png" id="2_h7t4j"]
+[ext_resource type="SpriteFrames" uid="uid://dj3h26rtaimqq" path="res://sprites/bubble/bubble.tres" id="2_kvtkt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8j1b2"]
 
@@ -10,10 +10,11 @@ collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_2m6g8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3.8147e-06, 0)
-scale = Vector2(0.0786026, 0.0746888)
-texture = ExtResource("2_h7t4j")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3.54, 3.54)
 shape = SubResource("CircleShape2D_8j1b2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.225, 0.225)
+sprite_frames = ExtResource("2_kvtkt")
+animation = &"pop"

@@ -24,14 +24,15 @@ sprites = Array[Texture2D]([ExtResource("2_hmvlq"), ExtResource("3_n6wtr"), ExtR
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(-0.499996, -0.500004)
-scale = Vector2(0.12, 0.12)
+scale = Vector2(0.225, 0.225)
 texture = ExtResource("2_hmvlq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2.615, 2.615)
 shape = SubResource("CircleShape2D_yihvp")
 
 [node name="BlowHitbox" type="ShapeCast2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(6.74, 6.74)
 shape = SubResource("CircleShape2D_cyk58")
 target_position = Vector2(0, 0)
 collision_mask = 2
