@@ -40,13 +40,13 @@ func format_timer(time_left: float) -> String:
 	return str(ceil(time_left))
 
 
-
 func _on_game_timer_timeout() -> void:
-	print('Game finished!')
-	enable_duck_input(false)
-	hud.set_timer("0")
-	started = false
-	hud.show_game_end(get_winning_team())
+	if started:
+		print('Game finished!')
+		enable_duck_input(false)
+		hud.set_timer("0")
+		started = false
+		hud.show_game_end(get_winning_team())
 
 
 func get_winning_team() -> int:
