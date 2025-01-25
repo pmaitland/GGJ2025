@@ -30,6 +30,8 @@ var dash_controller_pressed = false
 
 var current_direction = Direction.DOWN
 
+var collides_with_bubble = false
+
 const COLOURS = [
 	Color8(255, 252, 49), # Yellow
 	Color8(255, 29, 21), # Red
@@ -154,3 +156,7 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timeout() -> void:
 	dash_available = true
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Bubble: print("Collision with bubble detected")
