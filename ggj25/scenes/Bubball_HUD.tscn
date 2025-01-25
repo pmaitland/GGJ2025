@@ -1,0 +1,119 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6wg2fhghhum0"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_b2j7g"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_b2j7g")
+
+[node name="CountdownMessage" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -44.0
+offset_right = 20.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "READY?"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -121.0
+offset_right = 121.0
+offset_bottom = 117.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LeftScore" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
+
+[node name="Timer" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Timer"
+horizontal_alignment = 1
+
+[node name="RightScore" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -173.0
+offset_right = 170.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="GameStartButtons" type="VBoxContainer" parent="MarginContainer2"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="MarginContainer2/GameStartButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "START"
+
+[node name="GameEndButtons" type="VBoxContainer" parent="MarginContainer2"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RetryButton" type="Button" parent="MarginContainer2/GameEndButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer2/GameEndButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Main Menu"
+
+[node name="GamePauseButtons" type="VBoxContainer" parent="MarginContainer2"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Controls" type="Button" parent="MarginContainer2/GamePauseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Controls"
+
+[node name="Settings" type="Button" parent="MarginContainer2/GamePauseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="Exit" type="Button" parent="MarginContainer2/GamePauseButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer2/GameStartButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/GameEndButtons/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/GameEndButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/GamePauseButtons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MarginContainer2/GamePauseButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer2/GamePauseButtons/Exit" to="." method="_on_exit_pressed"]
