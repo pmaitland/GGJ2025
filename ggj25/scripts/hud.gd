@@ -5,6 +5,7 @@ class_name Hud extends CanvasLayer
 @onready var left_score: Label = $HBoxContainer/LeftScore
 @onready var right_score: Label = $HBoxContainer/RightScore
 @onready var game_timer: Label = $HBoxContainer/Timer
+@onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
@@ -27,6 +28,7 @@ func show_game_start() -> void:
 	hide_message()
 	hide_start_button()
 	start_game.emit()
+	audio_stream_player.play()
 
 func hide_message() -> void:
 	countdown_message.hide()

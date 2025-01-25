@@ -5,6 +5,7 @@ class_name Duck extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 @export var sprites: Array[Texture2D]
 @export var player_id: int = 0
@@ -93,6 +94,8 @@ func dash():
 		dash_available = false
 		dash_timer.start(DASH_DURATION)
 		dash_cooldown.start(DASH_COOLDOWN)
+		audio_stream_player.pitch_scale = 1 + randf_range(0, 0.25)
+		audio_stream_player.play()
 	
 
 func get_input_direction():
