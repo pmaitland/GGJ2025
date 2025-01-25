@@ -3,7 +3,7 @@ extends Node2D
 @onready var game_timer: Timer = $GameTimer
 @onready var hud: Hud = $Hud
 
-const GAME_TIME = 20
+const GAME_TIME = 60
 var started = false
 
 var left_team_score = 0
