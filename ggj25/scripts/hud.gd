@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name Hud extends CanvasLayer
 
 @onready var countdown_message: Label = $CountdownMessage
 @onready var start_button: Button = $StartButton
@@ -26,6 +26,7 @@ func show_game_start() -> void:
 	await get_tree().create_timer(1.0).timeout
 	hide_message()
 	hide_start_button()
+	start_game.emit()
 
 func hide_message() -> void:
 	countdown_message.hide()
@@ -36,7 +37,6 @@ func hide_start_button() -> void:
 func _on_start_button_pressed() -> void:
 	hide_start_button()
 	show_game_start()
-	start_game.emit()
 
 func set_left_score(score: int) -> void:
 	left_score.text = str(score)

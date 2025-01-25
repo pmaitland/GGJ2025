@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://4ahbiafhe1mj"]
+
+[ext_resource type="Script" path="res://scripts/main_screen.gd" id="1_nro0w"]
+[ext_resource type="Texture2D" uid="uid://dcqxjqndn3yp2" path="res://sprites/UI/GGJ00_Logo_Dark.svg" id="1_tdyj2"]
+[ext_resource type="Texture2D" uid="uid://dd4pxy3rjt3f2" path="res://sprites/UI/Duck sauce no ring.png" id="2_ur20e"]
+
+[node name="MainScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nro0w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 112.0
+offset_top = 274.0
+offset_right = 427.0
+offset_bottom = 375.0
+grow_vertical = 2
+
+[node name="GameMode" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game Mode"
+
+[node name="Controls" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Logos" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 170.0
+offset_top = -89.0
+offset_right = 210.0
+offset_bottom = -49.0
+grow_vertical = 0
+
+[node name="GGJ" type="Sprite2D" parent="Logos"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_tdyj2")
+
+[node name="DSG" type="Sprite2D" parent="Logos"]
+position = Vector2(285, 0)
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("2_ur20e")
