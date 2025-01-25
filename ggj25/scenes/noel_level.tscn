@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cb2cb20j8b7uv"]
+[gd_scene load_steps=5 format=3 uid="uid://cjr3kvcsvhq2o"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_0jx40"]
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="1_dabtm"]
-[ext_resource type="PackedScene" path="res://scenes/bubble.tscn" id="3_si8mg"]
-[ext_resource type="PackedScene" uid="uid://cbjq3nsk4i6ox" path="res://scenes/HUD.tscn" id="4_88pp2"]
+[ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="3_si8mg"]
+[ext_resource type="PackedScene" path="res://scenes/HUD.tscn" id="4_88pp2"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(101, 59)

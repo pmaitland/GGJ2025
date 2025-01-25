@@ -20,7 +20,7 @@ sprites = Array[Texture2D]([ExtResource("2_hmvlq"), ExtResource("3_n6wtr"), ExtR
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.499996, -0.500004)
-scale = Vector2(0.0848214, 0.0848214)
+scale = Vector2(0.12, 0.12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yihvp")

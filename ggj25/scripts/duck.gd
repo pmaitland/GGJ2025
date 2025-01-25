@@ -4,9 +4,8 @@ extends CharacterBody2D
 @onready var blow_hitbox: ShapeCast2D = $BlowHitbox
 @onready var sprite: Sprite2D = $Sprite2D
 
-
 @export var sprites: Array[Texture2D]
-
+@export var player_id: int = 0
 
 enum Direction { DOWN, DOWN_LEFT, LEFT, UP_LEFT, UP, UP_RIGHT, RIGHT, DOWN_RIGHT }
 const SPEED = 200.0
@@ -15,33 +14,47 @@ const BLOW_FORCE = 20
 
 var current_direction = Direction.DOWN
 
+const COLOURS = [
+	Color8(255, 252, 49), # Yellow
+	Color8(255, 29, 21), # Red
+	Color8(51, 124, 160), # Blue
+	Color8(62, 195, 0), # Green (very)
+]
 
 func _ready() -> void:
 	sprite.texture = sprites[0]
-	sprite.modulate = Color(randf(), randf(), randf())
+	sprite.modulate = COLOURS[player_id]
+	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
+
+
+func with_deadzone(vector: Vector2, deadzone: float = 0.3) -> Vector2:
+	if abs(vector.length()) < deadzone:
+		return Vector2.ZERO
+	return vector
+
+
+func is_controller():
+	return player_id in Input.get_connected_joypads()
 
 
 func _physics_process(_delta: float) -> void:
-	var x_direction := Input.get_axis("move_left", "move_right")
-	if x_direction:
-		velocity.x = x_direction
+	if is_controller():
+		velocity = with_deadzone(Vector2(Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X), Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y)))
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	var y_direction := Input.get_axis("move_up", "move_down")
+		velocity = Input.get_vector("p%s_move_left" % player_id, "p%s_move_right" % player_id, "p%s_move_up" % player_id, "p%s_move_down" % player_id)
 	
-	if y_direction:
-		velocity.y = y_direction
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-			
 	velocity = velocity.normalized()
-	velocity *= SPEED
+	set_direction(velocity.x, velocity.y)
 	
-	if Input.is_action_pressed("blow"):
-		blow()
+	velocity *= SPEED
 
-	set_direction(x_direction, y_direction)
+	
+	if is_controller():
+		if Input.is_joy_button_pressed(player_id, JOY_BUTTON_A):
+			blow()
+	else:
+		if Input.is_action_pressed("p%s_blow" % player_id):
+			blow()	
 	
 	sprite.texture = sprites[current_direction]
 
@@ -49,19 +62,19 @@ func _physics_process(_delta: float) -> void:
 
 
 func set_direction(x: float, y: float) -> void:
-	if y > 0:
-		if x < 0:
+	if y > 0.25:
+		if x < -0.25:
 			current_direction = Direction.DOWN_LEFT
-		elif x > 0:
+		elif x > 0.25:
 			current_direction = Direction.DOWN_RIGHT
 		else:
 			current_direction = Direction.DOWN
-	elif y < 0:
-		if x < 0:
+	elif y < -0.25:
+		if x < -0.25:
 			current_direction = Direction.UP_LEFT
-		elif x > 0:
+		elif x > 0.25:
 			current_direction = Direction.UP_RIGHT
-		elif x == 0:
+		else:
 			current_direction = Direction.UP
 	else:
 		if x < 0:
