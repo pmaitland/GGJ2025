@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnfisykkl2cb6"]
+[gd_scene load_steps=16 format=3 uid="uid://bnfisykkl2cb6"]
 
 [ext_resource type="Script" path="res://scripts/duck.gd" id="1_x1n4u"]
 [ext_resource type="Texture2D" uid="uid://cc8b34nnsxb8j" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://doxtltyi27w0n" path="res://sounds/quack.wav" id="10_qaxuo"]
 [ext_resource type="SpriteFrames" uid="uid://w1r8inlqhcm4" path="res://sprites/blow/blow.tres" id="11_g7p3h"]
 [ext_resource type="SpriteFrames" uid="uid://c8ygvrw21qg66" path="res://sprites/dash/dash.tres" id="12_vcajh"]
+[ext_resource type="AudioStream" uid="uid://d0ge3j5uqi6wa" path="res://sounds/dash.wav" id="13_nwh14"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yihvp"]
 
@@ -90,6 +91,10 @@ shape = SubResource("CircleShape2D_yihvp")
 position = Vector2(88, 2)
 scale = Vector2(0.245, 0.245)
 sprite_frames = ExtResource("12_vcajh")
+
+[node name="dashsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_nwh14")
+bus = &"SFX"
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
