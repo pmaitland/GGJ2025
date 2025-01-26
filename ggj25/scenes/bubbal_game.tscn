@@ -20,21 +20,21 @@ script = ExtResource("1_pxbye")
 position = Vector2(477, 263)
 
 [node name="duck1" parent="." instance=ExtResource("1_40w4y")]
-position = Vector2(230, 100)
+position = Vector2(192, 183)
 
 [node name="Bubble" parent="." instance=ExtResource("2_lkvlj")]
-position = Vector2(476, 312)
+position = Vector2(472, 296)
 
 [node name="RightGoal" parent="." instance=ExtResource("4_mjrpk")]
-position = Vector2(907, 464)
+position = Vector2(907, 269)
 
 [node name="Hud" parent="." instance=ExtResource("5_q1ckn")]
 
 [node name="LeftGoal" parent="." instance=ExtResource("4_mjrpk")]
-position = Vector2(64, 104)
+position = Vector2(64, 269)
 
 [node name="duck2" parent="." instance=ExtResource("1_40w4y")]
-position = Vector2(920, 329)
+position = Vector2(784, 391)
 player_id = 1
 
 [node name="WorldBorder2" type="StaticBody2D" parent="."]
@@ -78,11 +78,11 @@ stream = ExtResource("7_u18ih")
 volume_db = -10.0
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_40w4y")]
-position = Vector2(76, 250)
+position = Vector2(192, 398)
 player_id = 2
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("1_40w4y")]
-position = Vector2(772, 482)
+position = Vector2(781, 181)
 player_id = 3
 
 [node name="GameTimer" type="Timer" parent="."]
