@@ -1,6 +1,7 @@
 class_name Bubble extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 const FRICTION = 0.985
 const BOUNCE_SCALE = 0.8
@@ -26,6 +27,8 @@ func _physics_process(delta: float) -> void:
 
 func pop():
 	animated_sprite_2d.play("pop")
+	audio_stream_player_2d.pitch_scale = 1 + randf_range(0, 0.25)
+	audio_stream_player_2d.play()
 	set_collision_layer_value(2, false)
 	velocity = Vector2.ZERO
 	await get_tree().create_timer(5.0).timeout
