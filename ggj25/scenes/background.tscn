@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0h43ol3f3dhp"]
+
+[ext_resource type="SpriteFrames" uid="uid://mcqsphvuqngf" path="res://sprites/background/background.tres" id="1_0ga58"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_pq80r"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_pq80r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.625, 0.625)
+sprite_frames = ExtResource("1_0ga58")
