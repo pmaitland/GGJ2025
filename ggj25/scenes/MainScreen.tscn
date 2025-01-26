@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ta2u7luqlah4"]
+[gd_scene load_steps=5 format=3 uid="uid://ta2u7luqlah4"]
 
 [ext_resource type="Script" path="res://scripts/main_screen.gd" id="1_nro0w"]
 [ext_resource type="Texture2D" uid="uid://dcqxjqndn3yp2" path="res://sprites/UI/GGJ00_Logo_Dark.svg" id="1_tdyj2"]
+[ext_resource type="Theme" uid="uid://cn3iirbftfycl" path="res://default_theme.tres" id="2_0dyf7"]
 [ext_resource type="Texture2D" uid="uid://dd4pxy3rjt3f2" path="res://sprites/UI/Duck sauce no ring.png" id="2_ur20e"]
 
 [node name="MainScreen" type="Control"]
@@ -24,14 +25,17 @@ theme_override_constants/separation = 10
 
 [node name="GameMode" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_0dyf7")
 text = "Game Mode"
 
 [node name="Controls" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_0dyf7")
 text = "Controls"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_0dyf7")
 text = "Settings"
 
 [node name="Logos" type="HBoxContainer" parent="."]
