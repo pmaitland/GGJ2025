@@ -8,7 +8,6 @@ const BOUNCE_SCALE = 0.8
 
 func _ready() -> void:
 	animated_sprite_2d.play("default")
-	animated_sprite_2d.modulate = Color8(135, 224, 237)
 
 
 func blow(from: Transform2D, force: float) -> void:
