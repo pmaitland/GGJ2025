@@ -46,6 +46,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qaxuo")
+bus = &"SFX"
 
 [node name="BlowAnimations" type="Node2D" parent="."]
 visible = false
