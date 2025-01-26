@@ -1,8 +1,35 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cn3iirbftfycl"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://ccuea4y7wgca3"]
 
 [ext_resource type="FontFile" uid="uid://cvqkkkdqongif" path="res://fonts/Crayone.otf" id="1_vd7q3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u12wy"]
+bg_color = Color(0.770833, 0.75, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh5cr"]
+bg_color = Color(0.798333, 0.78, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_esr60"]
+bg_color = Color(0.74902, 0.72549, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3ld6"]
+bg_color = Color(0.38, 0.36, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcqeg"]
+bg_color = Color(0.7525, 0.73, 1, 0.498039)
+
 [resource]
+Button/colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_focus_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_hover_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_hover_pressed_color = Color(0.133333, 0.133333, 0.133333, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 Button/fonts/font = ExtResource("1_vd7q3")
+Button/styles/focus = SubResource("StyleBoxFlat_u12wy")
+Button/styles/hover = SubResource("StyleBoxFlat_nh5cr")
+Button/styles/normal = SubResource("StyleBoxFlat_esr60")
+Button/styles/pressed = SubResource("StyleBoxFlat_c3ld6")
+Label/colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 Label/fonts/font = ExtResource("1_vd7q3")
 TabBar/fonts/font = ExtResource("1_vd7q3")
+TabContainer/fonts/font = ExtResource("1_vd7q3")
+TabContainer/styles/panel = SubResource("StyleBoxFlat_dcqeg")
