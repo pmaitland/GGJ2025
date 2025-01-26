@@ -21,6 +21,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_fn6sq"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 5
 script = ExtResource("1_x1n4u")
@@ -28,6 +30,7 @@ sprites = Array[Texture2D]([ExtResource("2_hmvlq"), ExtResource("3_n6wtr"), ExtR
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
+y_sort_enabled = true
 position = Vector2(-0.499996, -0.500004)
 scale = Vector2(0.225, 0.225)
 texture = ExtResource("2_hmvlq")
@@ -55,18 +58,24 @@ stream = ExtResource("10_qaxuo")
 visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BlowAnimations"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(18, -19)
 rotation = -0.462512
 scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("11_g7p3h")
 
 [node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="BlowAnimations"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-20, 23)
 rotation = 2.51153
 scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("11_g7p3h")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="BlowAnimations"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(-19, -18)
 rotation = -2.33874
 scale = Vector2(0.15, 0.15)
@@ -74,6 +83,8 @@ sprite_frames = ExtResource("11_g7p3h")
 frame = 3
 
 [node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="BlowAnimations"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(20, 26)
 rotation = 0.829031
 scale = Vector2(0.15, 0.15)
@@ -89,6 +100,8 @@ shape = SubResource("CircleShape2D_yihvp")
 [node name="dashparent" type="Node2D" parent="."]
 
 [node name="DashAnimation" type="AnimatedSprite2D" parent="dashparent"]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(88, 2)
 scale = Vector2(0.245, 0.245)
 sprite_frames = ExtResource("12_vcajh")

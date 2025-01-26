@@ -13,6 +13,7 @@
 distance = 30.25
 
 [node name="Node2D" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(101, 59)
 script = ExtResource("1_pxbye")
 

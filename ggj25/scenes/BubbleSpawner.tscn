@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="2_wxefk"]
 
 [node name="BubbleSpawner" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_4obwi")
 bubble_scene = ExtResource("2_wxefk")
 spawn_delay = 1.0
