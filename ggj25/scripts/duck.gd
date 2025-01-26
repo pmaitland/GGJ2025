@@ -43,22 +43,28 @@ var quacking = false
 const QUACK_COOLDOWN = 20
 var quack_duration = 0
 
-const COLOURS = [
+const DUCK_COLOURS = [
 	Color8(255, 252, 49), # Yellow
 	Color8(255, 29, 21), # Red
 	Color8(51, 124, 160), # Blue
 	Color8(62, 195, 0), # Green (very)
 ]
 
+const TEAM_COLOURS = [
+	Color8(239, 153, 56), # Orange
+	Color8(161, 118, 219), # Purple
+]
+
 func _ready() -> void:
 	if (player_id >= 2 and !is_controller()):
 		queue_free()
 	sprite.texture = sprites[0]
-	sprite.modulate = COLOURS[player_id]
-	dash_animation.modulate = COLOURS[player_id]
+	sprite.material.set_shader_parameter("body_colour", DUCK_COLOURS[player_id]) 
+	sprite.material.set_shader_parameter("outline_color", TEAM_COLOURS[0] if player_id%2 == 0 else TEAM_COLOURS[1])
+	dash_animation.modulate = DUCK_COLOURS[player_id]
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
 	for _i in blow_animations.get_children():
-		_i.modulate = COLOURS[player_id]
+		_i.modulate = DUCK_COLOURS[player_id]
 		_i.play("default")
 
 
@@ -228,4 +234,4 @@ func die_and_flash():
 		sprite.visible = true
 	
 func revive():
-	sprite.modulate = COLOURS[player_id]
+	sprite.material.set_shader_parameter("body_colour", DUCK_COLOURS[player_id]) 

@@ -1,7 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bioxevgxmkxd5"]
+[gd_scene load_steps=6 format=3 uid="uid://bioxevgxmkxd5"]
 
 [ext_resource type="Script" path="res://scripts/goal.gd" id="1_h841x"]
 [ext_resource type="Texture2D" uid="uid://yynoten0w6hw" path="res://sprites/Plughole.png" id="2_px0qg"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_yg4y0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4jmt"]
+resource_local_to_scene = true
+shader = ExtResource("2_yg4y0")
+shader_parameter/width = 12
+shader_parameter/outline_color = null
+shader_parameter/flickering_speed = null
+shader_parameter/minimal_flickering_alpha = null
+shader_parameter/body_colour = Color(1, 1, 1, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3pd6c"]
 size = Vector2(68, 60)
@@ -12,6 +24,7 @@ collision_mask = 2
 script = ExtResource("1_h841x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_x4jmt")
 position = Vector2(0, -0.499998)
 scale = Vector2(0.16, 0.16)
 texture = ExtResource("2_px0qg")
