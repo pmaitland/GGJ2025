@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxcpb31qgji08"]
+[gd_scene load_steps=10 format=3 uid="uid://bxcpb31qgji08"]
 
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="1_40w4y"]
 [ext_resource type="Script" path="res://scripts/bubball.gd" id="1_pxbye"]
+[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="2_8838l"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="2_lkvlj"]
 [ext_resource type="PackedScene" uid="uid://bioxevgxmkxd5" path="res://scenes/Goal.tscn" id="4_mjrpk"]
 [ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="5_q1ckn"]
@@ -14,6 +15,9 @@ distance = 30.25
 [node name="Node2D" type="Node2D"]
 position = Vector2(101, 59)
 script = ExtResource("1_pxbye")
+
+[node name="Background" parent="." instance=ExtResource("2_8838l")]
+position = Vector2(477, 263)
 
 [node name="duck1" parent="." instance=ExtResource("1_40w4y")]
 position = Vector2(230, 100)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bofofn6xs4gkf"]
+[gd_scene load_steps=3 format=3 uid="uid://bofofn6xs4gkf"]
 
 [ext_resource type="Script" path="res://scripts/controls_screen.gd" id="1_otywc"]
+[ext_resource type="Theme" uid="uid://ccuea4y7wgca3" path="res://default_theme.tres" id="2_rr1pe"]
 
 [node name="ControlsScreen" type="Control"]
 layout_mode = 3
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_otywc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.811765, 0.917647, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -28,6 +38,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_rr1pe")
 theme_override_font_sizes/font_size = 64
 text = "Controls"
 horizontal_alignment = 1
@@ -35,11 +46,12 @@ horizontal_alignment = 1
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
+theme = ExtResource("2_rr1pe")
+current_tab = 0
 
 [node name="Keyboard" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
+theme = ExtResource("2_rr1pe")
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Keyboard"]
@@ -135,7 +147,9 @@ layout_mode = 2
 text = "R Ctrl"
 
 [node name="Controller" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
+theme = ExtResource("2_rr1pe")
 metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controller"]
@@ -183,6 +197,7 @@ text = "R Trigger"
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("2_rr1pe")
 text = "Back"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

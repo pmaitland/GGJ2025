@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://crq1dv00bhbu4"]
+[gd_scene load_steps=3 format=3 uid="uid://crq1dv00bhbu4"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_b2j7g"]
+[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_01w2v"]
 
 [node name="Bubball_HUD" type="CanvasLayer"]
 script = ExtResource("1_b2j7g")
@@ -17,6 +18,8 @@ offset_right = 20.0
 offset_bottom = 44.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_01w2v")
+theme_override_colors/font_color = Color(1, 0.97, 0.987, 1)
 theme_override_font_sizes/font_size = 64
 text = "READY?"
 
@@ -37,6 +40,8 @@ alignment = 1
 
 [node name="LeftScore" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
+theme_override_colors/font_color = Color(1, 0.97, 0.987, 1)
 theme_override_font_sizes/font_size = 48
 text = "0"
 
@@ -44,12 +49,16 @@ text = "0"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_01w2v")
+theme_override_colors/font_color = Color(1, 0.97, 0.987, 1)
 theme_override_font_sizes/font_size = 32
 text = "1.10"
 horizontal_alignment = 1
 
 [node name="RightScore" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
+theme_override_colors/font_color = Color(1, 0.97, 0.987, 1)
 theme_override_font_sizes/font_size = 48
 text = "0"
 horizontal_alignment = 2
@@ -74,6 +83,7 @@ theme_override_constants/separation = 10
 
 [node name="StartButton" type="Button" parent="MarginContainer2/GameStartButtons"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "START"
 
@@ -84,11 +94,13 @@ theme_override_constants/separation = 10
 
 [node name="RetryButton" type="Button" parent="MarginContainer2/GameEndButtons"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Retry"
 
 [node name="MainMenuButton" type="Button" parent="MarginContainer2/GameEndButtons"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
@@ -99,16 +111,19 @@ theme_override_constants/separation = 10
 
 [node name="Controls" type="Button" parent="MarginContainer2/GamePauseButtons"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Controls"
 
 [node name="Settings" type="Button" parent="MarginContainer2/GamePauseButtons"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
 [node name="Exit" type="Button" parent="MarginContainer2/GamePauseButtons"]
 layout_mode = 2
+theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 

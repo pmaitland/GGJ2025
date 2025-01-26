@@ -72,7 +72,10 @@ func show_game_end(win_team: int) -> void:
 	game_timer.modulate = Color(1, 0, 0, 1)
 	show_message("Finish!")
 	await get_tree().create_timer(1.0).timeout
-	show_message("Team " + str(win_team) + " Wins!")
+	if win_team == 0:
+		show_message("It's a Draw!")
+	else:
+		show_message("Team " + str(win_team) + " Wins!")
 	game_end_buttons.show()
 
 func hide_message() -> void:

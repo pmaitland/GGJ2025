@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjar0viraaigf"]
+[gd_scene load_steps=3 format=3 uid="uid://bjar0viraaigf"]
 
 [ext_resource type="Script" path="res://scripts/settings_screen.gd" id="1_x0e36"]
+[ext_resource type="Theme" uid="uid://ccuea4y7wgca3" path="res://default_theme.tres" id="2_ikigs"]
 
 [node name="SettingsScreen" type="Control"]
 layout_mode = 3
@@ -10,6 +11,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x0e36")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.811765, 0.917647, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -29,12 +39,14 @@ theme_override_constants/separation = 20
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_ikigs")
 theme_override_font_sizes/font_size = 64
 text = "Settings"
 horizontal_alignment = 1
 
 [node name="Audio" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_ikigs")
 theme_override_font_sizes/font_size = 32
 text = "Audio"
 
@@ -46,42 +58,46 @@ columns = 2
 
 [node name="Master" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme = ExtResource("2_ikigs")
 text = "Master Volume"
 
 [node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_ikigs")
 max_value = 1.0
 step = 0.05
 value = 1.0
 
 [node name="Music" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme = ExtResource("2_ikigs")
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_ikigs")
 max_value = 1.0
 step = 0.05
 value = 1.0
 
 [node name="SFX" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme = ExtResource("2_ikigs")
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("2_ikigs")
 max_value = 1.0
 step = 0.05
 value = 1.0
 
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_ikigs")
 text = "Back
 "
 
