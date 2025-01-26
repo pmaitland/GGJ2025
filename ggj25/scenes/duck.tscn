@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnfisykkl2cb6"]
+[gd_scene load_steps=17 format=3 uid="uid://bnfisykkl2cb6"]
 
 [ext_resource type="Script" path="res://scripts/duck.gd" id="1_x1n4u"]
 [ext_resource type="Texture2D" uid="uid://cc8b34nnsxb8j" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
@@ -17,6 +17,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_yihvp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyk58"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fn6sq"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 0
@@ -48,7 +50,6 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qaxuo")
-bus = &"SFX"
 
 [node name="BlowAnimations" type="Node2D" parent="."]
 visible = false
@@ -91,10 +92,18 @@ shape = SubResource("CircleShape2D_yihvp")
 position = Vector2(88, 2)
 scale = Vector2(0.245, 0.245)
 sprite_frames = ExtResource("12_vcajh")
+frame = 12
+frame_progress = 1.0
+
+[node name="DashHitbox" type="ShapeCast2D" parent="dashparent"]
+position = Vector2(29, 4)
+scale = Vector2(3.065, 3.065)
+shape = SubResource("CircleShape2D_fn6sq")
+target_position = Vector2(29.0375, -0.326264)
+collision_mask = 2
 
 [node name="dashsound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_nwh14")
-bus = &"SFX"
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

@@ -10,6 +10,7 @@ class_name Duck extends CharacterBody2D
 @onready var dash_animation: AnimatedSprite2D = $dashparent/DashAnimation
 @onready var dashparent: Node2D = $dashparent
 @onready var dashsound: AudioStreamPlayer = $dashsound
+@onready var dash_hitbox: ShapeCast2D = $dashparent/DashHitbox
 
 @export var sprites: Array[Texture2D]
 @export var player_id: int = 0
@@ -18,10 +19,11 @@ enum Direction { DOWN, DOWN_LEFT, LEFT, UP_LEFT, UP, UP_RIGHT, RIGHT, DOWN_RIGHT
 const SPEED = 250.0
 const ACCELERATION = 10
 const BLOW_FORCE = 20
+const DASH_FORCE = 400
 
 var input_enabled = true
 
-const DASH_DURATION = 0.07
+const DASH_DURATION = 0.1
 const DASH_SPEED = SPEED * 5
 const DASH_COOLDOWN = 0.5
 const DASH_ACCELERATION = ACCELERATION * 20
@@ -88,7 +90,7 @@ func _physics_process(_delta: float) -> void:
 	if direction != Vector2.ZERO:
 		last_direction = direction.normalized()
 	
-	set_direction(direction.x, direction.y)
+	set_direction(last_direction.x, last_direction.y)
 	var desired_velocity = direction * (DASH_SPEED if is_dashing else SPEED)
 	velocity = velocity.move_toward(desired_velocity, (ACCELERATION if velocity.length() <= SPEED and not is_dashing else DASH_ACCELERATION))
 	
@@ -129,10 +131,18 @@ func dash():
 		dash_available = false
 		dash_timer.start(DASH_DURATION)
 		dash_cooldown.start(DASH_COOLDOWN)
-		Input.start_joy_vibration(player_id, 0, 0.2, DASH_DURATION)
-		dash_animation.play("default")
+		Input.start_joy_vibration(player_id, 0, 0.6, DASH_DURATION)
+		dash_animation.play("default", 2)
 		dashsound.pitch_scale = 1 + randf_range(0, 0.25)
 		dashsound.play()
+		
+		if dash_hitbox.is_colliding():
+			for i in range(dash_hitbox.get_collision_count()):
+				var hit = dash_hitbox.get_collider(i)
+				if "name" in hit:
+					pass
+				if hit and hit.has_method("blow"):
+					hit.call("blow", global_transform, DASH_FORCE)
 	
 
 func get_input_direction():
@@ -142,34 +152,40 @@ func get_input_direction():
 	
 
 
+func set_dash_direction(rot_degress: int):
+	if not dash_animation.is_playing():
+		dashparent.rotation_degrees = rot_degress
+
+
 func set_direction(x: float, y: float) -> void:
+	
 	if y > 0.25:
 		if x < -0.25:
 			current_direction = Direction.DOWN_LEFT
-			dashparent.rotation_degrees = 315
+			set_dash_direction(315)
 		elif x > 0.25:
 			current_direction = Direction.DOWN_RIGHT
-			dashparent.rotation_degrees = 225
+			set_dash_direction(225)
 		else:
 			current_direction = Direction.DOWN
-			dashparent.rotation_degrees = 270
+			set_dash_direction(270)
 	elif y < -0.25:
 		if x < -0.25:
 			current_direction = Direction.UP_LEFT
-			dashparent.rotation_degrees = 45
+			set_dash_direction(45)
 		elif x > 0.25:
 			current_direction = Direction.UP_RIGHT
-			dashparent.rotation_degrees = 135
+			set_dash_direction(135)
 		else:
 			current_direction = Direction.UP
-			dashparent.rotation_degrees = 90
+			set_dash_direction(90)
 	else:
 		if x < 0:
 			current_direction = Direction.LEFT
-			dashparent.rotation_degrees = 0
+			set_dash_direction(0)
 		elif x > 0:
 			current_direction = Direction.RIGHT
-			dashparent.rotation_degrees = 180
+			set_dash_direction(180)
 
 
 func blow() -> void:
