@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci6kt24w05cm2"]
+[gd_scene load_steps=9 format=3 uid="uid://ci6kt24w05cm2"]
 
 [ext_resource type="Script" path="res://scripts/dodge_bubbal.gd" id="1_tn0gj"]
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="2_buhc6"]
+[ext_resource type="PackedScene" uid="uid://b4j1cmrmcuhvm" path="res://scenes/background.tscn" id="2_hjagh"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="3_xn0wj"]
 [ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="4_8n1yk"]
 [ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/BubbleSpawner.tscn" id="6_521ov"]
@@ -13,6 +14,9 @@ distance = 30.25
 [node name="DodgeBubbal" type="Node2D"]
 position = Vector2(102, 58)
 script = ExtResource("1_tn0gj")
+
+[node name="Background" parent="." instance=ExtResource("2_hjagh")]
+position = Vector2(477, 263)
 
 [node name="duck1" parent="." instance=ExtResource("2_buhc6")]
 position = Vector2(230, 100)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://olhc7phtfuy4"]
 
 [ext_resource type="Script" path="res://scripts/game_mode_selection.gd" id="1_rwp8f"]
-[ext_resource type="Theme" uid="uid://ccuea4y7wgca3" path="res://default_theme.tres" id="2_6rsk5"]
+[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_6rsk5"]
 [ext_resource type="Texture2D" uid="uid://cgoccqpnsqsib" path="res://sprites/UI/bubball-screenshot.png" id="3_x7mqc"]
 
 [node name="GameModeSelection" type="Control"]
@@ -66,10 +66,8 @@ layout_mode = 2
 theme = ExtResource("2_6rsk5")
 text = "Dodge Bubball"
 
-[node name="Game3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6rsk5")
-text = "TODO: Game 3"
 
 [node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -86,5 +84,4 @@ stretch_mode = 5
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game1" to="." method="_on_game_1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game2" to="." method="_on_game_2_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game3" to="." method="_on_game_3_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
