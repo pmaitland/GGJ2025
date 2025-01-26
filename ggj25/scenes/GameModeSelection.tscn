@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://olhc7phtfuy4"]
+[gd_scene load_steps=5 format=3 uid="uid://olhc7phtfuy4"]
 
 [ext_resource type="Script" path="res://scripts/game_mode_selection.gd" id="1_rwp8f"]
 [ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_6rsk5"]
 [ext_resource type="Texture2D" uid="uid://cgoccqpnsqsib" path="res://sprites/UI/bubball-screenshot.png" id="3_x7mqc"]
+[ext_resource type="Texture2D" uid="uid://bb83b42m813bh" path="res://sprites/UI/dodge_bubball_screenshot.png" id="3_x7n4a"]
 
 [node name="GameModeSelection" type="Control"]
 layout_mode = 3
@@ -12,6 +13,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rwp8f")
+GAME_1_SCREENSHOT = ExtResource("3_x7mqc")
+GAME_2_SCREENSHOT = ExtResource("3_x7n4a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -74,7 +77,7 @@ layout_mode = 2
 theme = ExtResource("2_6rsk5")
 text = "Back To Main Menu"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Screenshot" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -82,6 +85,8 @@ texture = ExtResource("3_x7mqc")
 expand_mode = 1
 stretch_mode = 5
 
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game1" to="." method="_on_game_1_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game1" to="." method="_on_game_1_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game2" to="." method="_on_game_2_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game2" to="." method="_on_game_2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
