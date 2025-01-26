@@ -59,7 +59,6 @@ columns = 2
 [node name="Master" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("2_ikigs")
-theme_override_font_sizes/font_size = 16
 text = "Master Volume"
 
 [node name="MasterSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
@@ -73,7 +72,6 @@ value = 1.0
 [node name="Music" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("2_ikigs")
-theme_override_font_sizes/font_size = 16
 text = "Music Volume"
 
 [node name="MusicSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
@@ -87,7 +85,6 @@ value = 1.0
 [node name="SFX" type="Label" parent="MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 theme = ExtResource("2_ikigs")
-theme_override_font_sizes/font_size = 16
 text = "SFX Volume"
 
 [node name="SFXSlider" type="HSlider" parent="MarginContainer/VBoxContainer/GridContainer"]
