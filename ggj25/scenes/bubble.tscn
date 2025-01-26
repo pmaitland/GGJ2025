@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1jn5x64l5q8v"]
+[gd_scene load_steps=7 format=3 uid="uid://c1jn5x64l5q8v"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_2m6g8"]
 [ext_resource type="Shader" path="res://shaders/bubble.gdshader" id="2_g3qeu"]
 [ext_resource type="SpriteFrames" uid="uid://dj3h26rtaimqq" path="res://sprites/bubble/bubble.tres" id="2_kvtkt"]
+[ext_resource type="AudioStream" uid="uid://bfqltrpisof5d" path="res://sounds/pop.wav" id="4_eo50l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8j1b2"]
 
@@ -25,3 +26,6 @@ shape = SubResource("CircleShape2D_8j1b2")
 material = SubResource("ShaderMaterial_t4mru")
 scale = Vector2(0.225, 0.225)
 sprite_frames = ExtResource("2_kvtkt")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_eo50l")
