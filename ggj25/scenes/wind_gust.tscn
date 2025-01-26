@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvgd2pctach52"]
+
+[ext_resource type="Script" path="res://scripts/wind_gust.gd" id="1_6bc72"]
+
+[sub_resource type="Curve" id="Curve_8jatt"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_nn86s"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_1xc83"]
+_data = {
+"points": PackedVector2Array(0, 0, 72, -1, 208, 174, -90, -1, 90, 1, 367.53, 124, -65, 0, 65, 0, 597.485, 203, -7.75885, -57.6333, 7.75885, 57.6333, 819.535, 125)
+}
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_g4577"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve2D" id="Curve2D_r0aih"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 329, 376, -89.4341, -30.7013, 89.4341, 30.7013, 533, 403, -53.3936, -34.7058, 53.3936, 34.7058, 677, 503, 0, 0, 0, 0, 852, 532)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_hqgii"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 492, 237, -26.9391, 74.0825, 26.9391, -74.0825, 744, 203, 0, 0, 0, 0, 725, 89)
+}
+point_count = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="WindGust" type="Line2D" parent="."]
+points = PackedVector2Array(517, 250)
+width = 5.0
+width_curve = SubResource("Curve_8jatt")
+script = ExtResource("1_6bc72")
+line_segments = 40
+trail_color_gradient = SubResource("Gradient_nn86s")
+
+[node name="Path2D" type="Path2D" parent="WindGust"]
+position = Vector2(-287.448, 141)
+scale = Vector2(1.39158, 1)
+curve = SubResource("Curve2D_1xc83")
+
+[node name="Wind gust 2" type="Line2D" parent="."]
+points = PackedVector2Array(174, 160)
+width = 5.0
+width_curve = SubResource("Curve_8jatt")
+script = ExtResource("1_6bc72")
+line_segments = 40
+trail_color_gradient = SubResource("Gradient_g4577")
+wait = 1.0
+
+[node name="Path2D" type="Path2D" parent="Wind gust 2"]
+position = Vector2(-79, -16)
+curve = SubResource("Curve2D_r0aih")
+
+[node name="Wind gust 3" type="Line2D" parent="."]
+width = 5.0
+width_curve = SubResource("Curve_8jatt")
+script = ExtResource("1_6bc72")
+line_segments = 40
+trail_color_gradient = SubResource("Gradient_g4577")
+wait = 0.2
+
+[node name="Path2D" type="Path2D" parent="Wind gust 3"]
+position = Vector2(-35, 5)
+curve = SubResource("Curve2D_hqgii")

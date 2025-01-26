@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4j1cmrmcuhvm"]
+[gd_scene load_steps=3 format=3 uid="uid://dquclk34i07lf"]
 
 [ext_resource type="SpriteFrames" uid="uid://mcqsphvuqngf" path="res://sprites/background/background.tres" id="1_0ga58"]
 [ext_resource type="Script" path="res://scripts/background.gd" id="1_pq80r"]
