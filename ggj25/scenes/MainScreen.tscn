@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main_screen.gd" id="1_nro0w"]
 [ext_resource type="Texture2D" uid="uid://dcqxjqndn3yp2" path="res://sprites/UI/GGJ00_Logo_Dark.svg" id="1_tdyj2"]
-[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_0dyf7"]
+[ext_resource type="Theme" uid="uid://gdu3xr023dse" path="res://default_theme.tres" id="2_0dyf7"]
 [ext_resource type="Texture2D" uid="uid://ewxcudd3knef" path="res://sprites/UI/Splash.png" id="2_7xr3y"]
 
 [node name="MainScreen" type="Control"]
