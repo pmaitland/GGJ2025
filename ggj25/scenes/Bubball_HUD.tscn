@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://crq1dv00bhbu4"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_b2j7g"]
-[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_01w2v"]
+[ext_resource type="Theme" uid="uid://gdu3xr023dse" path="res://default_theme.tres" id="2_01w2v"]
 
 [node name="Bubball_HUD" type="CanvasLayer"]
 script = ExtResource("1_b2j7g")
@@ -12,10 +12,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -44.0
-offset_right = 20.0
-offset_bottom = 44.0
+offset_left = -104.0
+offset_top = -82.0
+offset_right = 104.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_01w2v")
@@ -32,6 +32,10 @@ offset_right = 121.0
 offset_bottom = 117.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 25
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(1, 0.811765, 0.917647, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
