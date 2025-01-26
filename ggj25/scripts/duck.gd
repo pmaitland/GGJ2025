@@ -9,6 +9,7 @@ class_name Duck extends CharacterBody2D
 @onready var blow_animations: Node2D = $BlowAnimations
 @onready var dash_animation: AnimatedSprite2D = $dashparent/DashAnimation
 @onready var dashparent: Node2D = $dashparent
+@onready var dashsound: AudioStreamPlayer = $dashsound
 
 @export var sprites: Array[Texture2D]
 @export var player_id: int = 0
@@ -124,6 +125,8 @@ func dash():
 		audio_stream_player.play()
 		Input.start_joy_vibration(player_id, 0, 0.2, DASH_DURATION)
 		dash_animation.play("default")
+		dashsound.pitch_scale = 1 + randf_range(0, 0.25)
+		dashsound.play()
 	
 
 func get_input_direction():
