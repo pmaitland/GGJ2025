@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/main_screen.gd" id="1_nro0w"]
 [ext_resource type="Texture2D" uid="uid://dcqxjqndn3yp2" path="res://sprites/UI/GGJ00_Logo_Dark.svg" id="1_tdyj2"]
 [ext_resource type="Theme" uid="uid://ccuea4y7wgca3" path="res://default_theme.tres" id="2_0dyf7"]
-[ext_resource type="Texture2D" uid="uid://dd4pxy3rjt3f2" path="res://sprites/UI/Duck sauce no ring.png" id="2_ur20e"]
+[ext_resource type="Texture2D" uid="uid://ewxcudd3knef" path="res://sprites/UI/Splash.png" id="2_7xr3y"]
 
 [node name="MainScreen" type="Control"]
 layout_mode = 3
@@ -14,22 +14,105 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nro0w")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.811765, 0.917647, 1)
+texture = ExtResource("2_7xr3y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 29.0
+offset_top = 13.0
+offset_right = -374.0
+offset_bottom = -411.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.92, 0.965333, 0.945098)
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -568.0
+offset_top = -313.0
+offset_right = 205.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -157.0
+offset_right = 377.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0dyf7")
+theme_override_font_sizes/font_size = 128
+text = "RUBBER DUCK"
+
+[node name="Label2" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -16.5
+offset_right = -21.0
+offset_bottom = 70.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0dyf7")
+theme_override_font_sizes/font_size = 64
+text = "BUBBLE"
+
+[node name="Label3" type="Label" parent="Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -60.0
+offset_right = 374.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_0dyf7")
+theme_override_font_sizes/font_size = 128
+text = "PARTY"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 112.0
-offset_top = 274.0
-offset_right = 427.0
-offset_bottom = 375.0
+offset_left = 446.0
+offset_top = 329.0
+offset_right = 706.0
+offset_bottom = 448.0
+grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 10
 
 [node name="GameMode" type="Button" parent="VBoxContainer"]
@@ -47,28 +130,17 @@ layout_mode = 2
 theme = ExtResource("2_0dyf7")
 text = "Settings"
 
-[node name="Logos" type="HBoxContainer" parent="."]
+[node name="GGJ" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 112.0
-offset_top = -127.0
-offset_right = 3277.0
-offset_bottom = 1234.0
+offset_left = 44.0
+offset_top = -119.0
+offset_right = 149.0
+offset_bottom = -14.0
 grow_vertical = 0
-scale = Vector2(0.07, 0.07)
-theme_override_constants/separation = 500
-
-[node name="GGJ" type="TextureRect" parent="Logos"]
-layout_mode = 2
 texture = ExtResource("1_tdyj2")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="DSG" type="TextureRect" parent="Logos"]
-layout_mode = 2
-texture = ExtResource("2_ur20e")
 expand_mode = 2
 stretch_mode = 5
 
