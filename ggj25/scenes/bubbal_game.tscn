@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="1_40w4y"]
 [ext_resource type="Script" path="res://scripts/bubball.gd" id="1_pxbye"]
-[ext_resource type="PackedScene" uid="uid://b4j1cmrmcuhvm" path="res://scenes/background.tscn" id="2_8838l"]
+[ext_resource type="PackedScene" path="res://scenes/background.tscn" id="2_8838l"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="2_lkvlj"]
 [ext_resource type="PackedScene" uid="uid://bioxevgxmkxd5" path="res://scenes/Goal.tscn" id="4_mjrpk"]
 [ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="5_q1ckn"]

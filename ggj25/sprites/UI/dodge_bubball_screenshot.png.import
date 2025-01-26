@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bohjclrqhl8nc"
-path="res://.godot/imported/bubball.png-10fc43eb2bd826d6c125caf18119cbde.ctex"
+uid="uid://bb83b42m813bh"
+path="res://.godot/imported/dodge_bubball_screenshot.png-cbe3f6528d1c6bdf66ac80eea514c180.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/bubball.png"
-dest_files=["res://.godot/imported/bubball.png-10fc43eb2bd826d6c125caf18119cbde.ctex"]
+source_file="res://sprites/UI/dodge_bubball_screenshot.png"
+dest_files=["res://.godot/imported/dodge_bubball_screenshot.png-cbe3f6528d1c6bdf66ac80eea514c180.ctex"]
 
 [params]
 
