@@ -78,6 +78,12 @@ scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("11_g7p3h")
 frame = 3
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="AreaCollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_yihvp")
+
 [node name="dashparent" type="Node2D" parent="."]
 
 [node name="DashAnimation" type="AnimatedSprite2D" parent="dashparent"]
@@ -87,3 +93,4 @@ sprite_frames = ExtResource("12_vcajh")
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

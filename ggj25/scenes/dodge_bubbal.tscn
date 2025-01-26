@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci6kt24w05cm2"]
+
+[ext_resource type="Script" path="res://scripts/dodge_bubbal.gd" id="1_tn0gj"]
+[ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="2_buhc6"]
+[ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="3_xn0wj"]
+[ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="4_8n1yk"]
+[ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/BubbleSpawner.tscn" id="6_521ov"]
+[ext_resource type="AudioStream" uid="uid://ob8hhxoeng52" path="res://sounds/bathtime.wav" id="6_y3cxj"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ev84h"]
+distance = 30.25
+
+[node name="DodgeBubbal" type="Node2D"]
+position = Vector2(102, 58)
+script = ExtResource("1_tn0gj")
+
+[node name="duck1" parent="." instance=ExtResource("2_buhc6")]
+position = Vector2(230, 100)
+
+[node name="Bubble" parent="." instance=ExtResource("3_xn0wj")]
+position = Vector2(476, 312)
+
+[node name="Hud" parent="." instance=ExtResource("4_8n1yk")]
+game_mode = 1
+
+[node name="duck2" parent="." instance=ExtResource("2_buhc6")]
+position = Vector2(920, 329)
+player_id = 1
+
+[node name="WorldBorder2" type="StaticBody2D" parent="."]
+position = Vector2(507, 620)
+scale = Vector2(-1, -1)
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder2"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+position = Vector2(608, -88)
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="WorldBorder4" type="StaticBody2D" parent="."]
+position = Vector2(1083, 221)
+rotation = 1.5708
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder4"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="WorldBorder3" type="StaticBody2D" parent="."]
+position = Vector2(-133, 250)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder3"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_y3cxj")
+volume_db = -10.0
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_buhc6")]
+position = Vector2(76, 250)
+player_id = 2
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("2_buhc6")]
+position = Vector2(772, 482)
+player_id = 3
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[node name="BubbleSpawner" parent="." instance=ExtResource("6_521ov")]
+position = Vector2(476, 313)
+
+[connection signal="collided_with_bubble" from="duck1" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="start_game" from="Hud" to="." method="_on_hud_start_game"]
+[connection signal="collided_with_bubble" from="duck2" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="collided_with_bubble" from="CharacterBody2D" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="collided_with_bubble" from="CharacterBody2D2" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

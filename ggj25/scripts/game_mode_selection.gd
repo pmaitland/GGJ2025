@@ -19,7 +19,7 @@ func _on_game_1_pressed() -> void:
 
 
 func _on_game_2_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/dodge_bubbal.tscn")
 
 
 func _on_game_3_pressed() -> void:

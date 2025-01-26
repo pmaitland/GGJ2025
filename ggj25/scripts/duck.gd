@@ -36,6 +36,8 @@ var blow_animation_playing = false
 const blow_animation_duration = 39
 var blow_animation_current_duration = 0
 
+signal collided_with_bubble
+
 var quacking = false
 const QUACK_COOLDOWN = 20
 var quack_duration = 0
@@ -207,3 +209,20 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_cooldown_timeout() -> void:
 	dash_available = true
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body is Bubble:
+		collided_with_bubble.emit(self, body as Bubble)
+		
+func die_and_flash():
+	sprite.modulate = Color8(220,220,220)
+	
+	for i in range(0,8):	
+		await get_tree().create_timer(0.0625).timeout
+		sprite.visible = false
+		await get_tree().create_timer(0.0625).timeout
+		sprite.visible = true
+	
+func revive():
+	sprite.modulate = COLOURS[player_id]
