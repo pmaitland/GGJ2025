@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci6kt24w05cm2"]
+[gd_scene load_steps=7 format=3 uid="uid://ci6kt24w05cm2"]
 
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="2_buhc6"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="3_xn0wj"]
-[ext_resource type="PackedScene" uid="uid://c6wg2fhghhum0" path="res://scenes/HUD.tscn" id="5_liwri"]
+[ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="4_8n1yk"]
+[ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/BubbleSpawner.tscn" id="6_521ov"]
 [ext_resource type="AudioStream" uid="uid://ob8hhxoeng52" path="res://sounds/bathtime.wav" id="6_y3cxj"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ilvfr"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ev84h"]
 distance = 30.25
 
 [node name="DodgeBubbal" type="Node2D"]
@@ -17,7 +18,7 @@ position = Vector2(230, 100)
 [node name="Bubble" parent="." instance=ExtResource("3_xn0wj")]
 position = Vector2(476, 312)
 
-[node name="Hud" parent="." instance=ExtResource("5_liwri")]
+[node name="Hud" parent="." instance=ExtResource("4_8n1yk")]
 
 [node name="duck2" parent="." instance=ExtResource("2_buhc6")]
 position = Vector2(920, 329)
@@ -30,7 +31,7 @@ collision_layer = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder2"]
 rotation = -3.14159
-shape = SubResource("WorldBoundaryShape2D_ilvfr")
+shape = SubResource("WorldBoundaryShape2D_ev84h")
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 position = Vector2(608, -88)
@@ -38,7 +39,7 @@ collision_layer = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder"]
 rotation = -3.14159
-shape = SubResource("WorldBoundaryShape2D_ilvfr")
+shape = SubResource("WorldBoundaryShape2D_ev84h")
 
 [node name="WorldBorder4" type="StaticBody2D" parent="."]
 position = Vector2(1083, 221)
@@ -47,7 +48,7 @@ collision_layer = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder4"]
 rotation = -3.14159
-shape = SubResource("WorldBoundaryShape2D_ilvfr")
+shape = SubResource("WorldBoundaryShape2D_ev84h")
 
 [node name="WorldBorder3" type="StaticBody2D" parent="."]
 position = Vector2(-133, 250)
@@ -57,7 +58,7 @@ collision_layer = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder3"]
 rotation = -3.14159
-shape = SubResource("WorldBoundaryShape2D_ilvfr")
+shape = SubResource("WorldBoundaryShape2D_ev84h")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y3cxj")
@@ -72,3 +73,6 @@ position = Vector2(772, 482)
 player_id = 3
 
 [node name="GameTimer" type="Timer" parent="."]
+
+[node name="BubbleSpawner" parent="." instance=ExtResource("6_521ov")]
+position = Vector2(476, 313)
