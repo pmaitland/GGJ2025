@@ -7,6 +7,8 @@ class_name Duck extends CharacterBody2D
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var blow_animations: Node2D = $BlowAnimations
+@onready var dash_animation: AnimatedSprite2D = $dashparent/DashAnimation
+@onready var dashparent: Node2D = $dashparent
 
 @export var sprites: Array[Texture2D]
 @export var player_id: int = 0
@@ -46,6 +48,7 @@ func _ready() -> void:
 		queue_free()
 	sprite.texture = sprites[0]
 	sprite.modulate = COLOURS[player_id]
+	dash_animation.modulate = COLOURS[player_id]
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
 	for _i in blow_animations.get_children():
 		_i.modulate = COLOURS[player_id]
@@ -120,6 +123,7 @@ func dash():
 		audio_stream_player.pitch_scale = 1 + randf_range(0, 0.25)
 		audio_stream_player.play()
 		Input.start_joy_vibration(player_id, 0, 0.2, DASH_DURATION)
+		dash_animation.play("default")
 	
 
 func get_input_direction():
@@ -133,22 +137,30 @@ func set_direction(x: float, y: float) -> void:
 	if y > 0.25:
 		if x < -0.25:
 			current_direction = Direction.DOWN_LEFT
+			dashparent.rotation_degrees = 315
 		elif x > 0.25:
 			current_direction = Direction.DOWN_RIGHT
+			dashparent.rotation_degrees = 225
 		else:
 			current_direction = Direction.DOWN
+			dashparent.rotation_degrees = 270
 	elif y < -0.25:
 		if x < -0.25:
 			current_direction = Direction.UP_LEFT
+			dashparent.rotation_degrees = 45
 		elif x > 0.25:
 			current_direction = Direction.UP_RIGHT
+			dashparent.rotation_degrees = 135
 		else:
 			current_direction = Direction.UP
+			dashparent.rotation_degrees = 90
 	else:
 		if x < 0:
 			current_direction = Direction.LEFT
+			dashparent.rotation_degrees = 0
 		elif x > 0:
 			current_direction = Direction.RIGHT
+			dashparent.rotation_degrees = 180
 
 
 func blow() -> void:
