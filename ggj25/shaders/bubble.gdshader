@@ -11,12 +11,12 @@ void vertex() {
 void fragment() {
 	vec4 main_texture = texture(TEXTURE, UV);
 	vec4 final_output = main_texture;
-	
+
 	float original_modulation = 1.0 - tint_factor;
-	
+
 	final_output.rgb = mix(main_texture.rgb * original_modulation, colour.rgb * tint_factor, tint_factor);
 	final_output.a *= fade;
-	
+
 	COLOR = final_output;
 }
 
