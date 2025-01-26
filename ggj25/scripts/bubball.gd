@@ -10,6 +10,9 @@ var started = false
 var left_team_score = 0
 var right_team_score = 0
 
+
+var ducks: Array[Duck]
+
 func _on_hud_start_game() -> void:
 	print('Bubball Started!')
 	game_timer.start(GAME_TIME)
@@ -22,7 +25,9 @@ func _ready() -> void:
 	game_timer.wait_time = GAME_TIME
 	hud.set_timer(str(GAME_TIME))
 	hud.setup_game()
+	ducks = find_ducks()
 	enable_duck_input(false)
+	
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,17 +65,31 @@ func get_winning_team() -> int:
 func _on_left_goal_bubble_collected(team_id: int) -> void:
 	if started:
 		right_team_score += 1
-		bubble_spawner.spawn_bubble()
+		on_goal_scored()
 
 
 func _on_right_goal_bubble_collected(team_id: int) -> void:
 	if started:
 		left_team_score += 1
-		bubble_spawner.spawn_bubble()
+		on_goal_scored()
 
-func enable_duck_input(enable, node: Node = self):	
-	if node is Duck:
-		print('Setting input for ', node.name, enable)
-		(node as Duck).set_input_enabled(enable)
-	for n in node.get_children():
-		enable_duck_input(enable, n)
+
+func on_goal_scored():
+	for duck in ducks:
+		if duck != null:
+			duck.goal_scored()
+	await get_tree().create_timer(1.0).timeout
+	bubble_spawner.spawn_bubble()
+
+func enable_duck_input(enable, node: Node = self):
+	for duck in ducks:
+		if duck != null:
+			duck.set_input_enabled(enable)
+			print('Setting input for ', duck.name, enable)
+		
+func find_ducks() -> Array[Duck]:
+	var result: Array[Duck] = []
+	for n in self.get_children():
+		if n is Duck:
+			result.append(n as Duck)
+	return result

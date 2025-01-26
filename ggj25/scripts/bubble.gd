@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 
 func pop():
 	animated_sprite_2d.play("pop")
+	set_collision_layer_value(2, false)
 	velocity = Vector2.ZERO
 	await get_tree().create_timer(5.0).timeout
 	queue_free()

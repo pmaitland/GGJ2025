@@ -10,8 +10,7 @@ enum SPAWNER_TYPE { MANUAL, TIMER }
 
 func spawn_bubble():
 	var bubble: Bubble = bubble_scene.instantiate()
-	bubble.position = global_position
-	get_tree().root.add_child(bubble)
+	add_child(bubble)
 
 
 func _ready() -> void:

@@ -98,7 +98,7 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_retry_button_pressed() -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/bubbal_game.tscn")
 
 
 func _on_controls_pressed() -> void:
@@ -106,4 +106,4 @@ func _on_controls_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-	pass # Replace with function body.
+	SceneManager.go_to_scene("res://scenes/SettingsScreen.tscn")

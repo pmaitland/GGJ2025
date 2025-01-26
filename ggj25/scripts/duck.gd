@@ -84,7 +84,7 @@ func _physics_process(_delta: float) -> void:
 	
 	
 	if is_controller():
-		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3: 
+		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3 or Input.is_joy_button_pressed(player_id, JOY_BUTTON_B): 
 			blow()
 	else:
 		if Input.is_action_pressed("p%s_blow" % player_id):
@@ -119,6 +119,7 @@ func dash():
 		dash_cooldown.start(DASH_COOLDOWN)
 		audio_stream_player.pitch_scale = 1 + randf_range(0, 0.25)
 		audio_stream_player.play()
+		Input.start_joy_vibration(player_id, 0, 0.2, DASH_DURATION)
 	
 
 func get_input_direction():
@@ -153,13 +154,24 @@ func set_direction(x: float, y: float) -> void:
 func blow() -> void:
 	blow_animation_playing = true
 	blow_animations.visible = true
+	var hit_bubble = false
 	if blow_hitbox.is_colliding():
 		for i in range(blow_hitbox.get_collision_count()):
 			var hit = blow_hitbox.get_collider(i)
 			if "name" in hit:
 				pass
 			if hit and hit.has_method("blow"):
+				hit_bubble = true
 				hit.call("blow", global_transform, BLOW_FORCE)
+	
+	if hit_bubble:
+		Input.start_joy_vibration(player_id, 0.2, 0, 0.02)
+	else:
+		Input.start_joy_vibration(player_id, 0.05, 0, 0.02)
+
+
+func goal_scored():
+	Input.start_joy_vibration(player_id, 0.5, 0.5, 1)
 
 
 func _on_dash_timer_timeout() -> void:
