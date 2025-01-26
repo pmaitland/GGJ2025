@@ -8,6 +8,7 @@ const BOUNCE_SCALE = 0.8
 
 
 func _ready() -> void:
+	animated_sprite_2d.modulate = Color8(227, 161, 218)
 	animated_sprite_2d.play("default")
 
 

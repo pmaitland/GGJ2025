@@ -1,17 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1jn5x64l5q8v"]
+[gd_scene load_steps=5 format=3 uid="uid://c1jn5x64l5q8v"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_2m6g8"]
-[ext_resource type="Shader" path="res://shaders/bubble.gdshader" id="2_g3qeu"]
 [ext_resource type="SpriteFrames" uid="uid://dj3h26rtaimqq" path="res://sprites/bubble/bubble.tres" id="2_kvtkt"]
 [ext_resource type="AudioStream" uid="uid://bfqltrpisof5d" path="res://sounds/pop.wav" id="4_eo50l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8j1b2"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t4mru"]
-shader = ExtResource("2_g3qeu")
-shader_parameter/colour = Color(0.418297, 0.69987, 0.985078, 1)
-shader_parameter/tint_factor = 0.601
-shader_parameter/fade = 0.8
 
 [node name="Bubble" type="CharacterBody2D"]
 collision_layer = 2
@@ -23,7 +16,6 @@ scale = Vector2(3.54, 3.54)
 shape = SubResource("CircleShape2D_8j1b2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_t4mru")
 scale = Vector2(0.225, 0.225)
 sprite_frames = ExtResource("2_kvtkt")
 
