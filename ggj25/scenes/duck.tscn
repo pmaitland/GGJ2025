@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnfisykkl2cb6"]
+[gd_scene load_steps=14 format=3 uid="uid://bnfisykkl2cb6"]
 
 [ext_resource type="Script" path="res://scripts/duck.gd" id="1_x1n4u"]
 [ext_resource type="Texture2D" uid="uid://cc8b34nnsxb8j" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bh03b45b1ltkb" path="res://sprites/duck/duck6.png" id="8_x2q5v"]
 [ext_resource type="Texture2D" uid="uid://n2svyvflvb2q" path="res://sprites/duck/duck7.png" id="9_0sns0"]
 [ext_resource type="AudioStream" uid="uid://doxtltyi27w0n" path="res://sounds/quack.wav" id="10_qaxuo"]
+[ext_resource type="SpriteFrames" uid="uid://w1r8inlqhcm4" path="res://sprites/blow/blow.tres" id="11_g7p3h"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yihvp"]
 
@@ -45,6 +46,36 @@ one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qaxuo")
+bus = &"SFX"
+
+[node name="BlowAnimations" type="Node2D" parent="."]
+visible = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BlowAnimations"]
+position = Vector2(18, -19)
+rotation = -0.462512
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("11_g7p3h")
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="BlowAnimations"]
+position = Vector2(-20, 23)
+rotation = 2.51153
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("11_g7p3h")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="BlowAnimations"]
+position = Vector2(-19, -18)
+rotation = -2.33874
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("11_g7p3h")
+frame = 3
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="BlowAnimations"]
+position = Vector2(20, 26)
+rotation = 0.829031
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("11_g7p3h")
+frame = 3
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 3

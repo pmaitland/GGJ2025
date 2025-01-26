@@ -6,6 +6,7 @@ class_name Duck extends CharacterBody2D
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var blow_animations: Node2D = $BlowAnimations
 
 @export var sprites: Array[Texture2D]
 @export var player_id: int = 0
@@ -29,6 +30,10 @@ var dash_controller_pressed = false
 
 var current_direction = Direction.DOWN
 
+var blow_animation_playing = false
+const blow_animation_duration = 39
+var blow_animation_current_duration = 0
+
 var collides_with_bubble = false
 
 const COLOURS = [
@@ -44,6 +49,9 @@ func _ready() -> void:
 	sprite.texture = sprites[0]
 	sprite.modulate = COLOURS[player_id]
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
+	for _i in blow_animations.get_children():
+		_i.modulate = COLOURS[player_id]
+		_i.play("default")
 
 
 func with_deadzone(vector: Vector2, deadzone: float = 0.3) -> Vector2:
@@ -94,6 +102,13 @@ func _physics_process(_delta: float) -> void:
 			dash()
 	
 	sprite.texture = sprites[current_direction]
+	
+	if blow_animation_playing:
+		if blow_animation_current_duration > blow_animation_duration:
+			blow_animation_playing = false
+			blow_animation_current_duration = 0
+			blow_animations.visible = false
+		blow_animation_current_duration += 1
 
 	move_and_slide()
 
@@ -106,6 +121,7 @@ func dash():
 		dash_cooldown.start(DASH_COOLDOWN)
 		audio_stream_player.pitch_scale = 1 + randf_range(0, 0.25)
 		audio_stream_player.play()
+		Input.start_joy_vibration(player_id, 0, 0.2, DASH_DURATION)
 	
 
 func get_input_direction():
@@ -138,13 +154,26 @@ func set_direction(x: float, y: float) -> void:
 
 
 func blow() -> void:
+	blow_animation_playing = true
+	blow_animations.visible = true
+	var hit_bubble = false
 	if blow_hitbox.is_colliding():
 		for i in range(blow_hitbox.get_collision_count()):
 			var hit = blow_hitbox.get_collider(i)
 			if "name" in hit:
 				pass
 			if hit and hit.has_method("blow"):
+				hit_bubble = true
 				hit.call("blow", global_transform, BLOW_FORCE)
+	
+	if hit_bubble:
+		Input.start_joy_vibration(player_id, 0.2, 0, 0.02)
+	else:
+		Input.start_joy_vibration(player_id, 0.05, 0, 0.02)
+
+
+func goal_scored():
+	Input.start_joy_vibration(player_id, 0.5, 0.5, 1)
 
 
 func _on_dash_timer_timeout() -> void:
