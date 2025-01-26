@@ -21,6 +21,8 @@ class_name Hud extends CanvasLayer
 
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
 
+@export var game_mode: int = 0 # 0 for football, 1 for dodge ball
+
 # Notifies `Main` node that the button has been pressed
 signal start_game
 
@@ -98,7 +100,8 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_retry_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/bubbal_game.tscn")
+	if game_mode == 0: get_tree().change_scene_to_file("res://scenes/bubbal_game.tscn")
+	elif game_mode == 1: get_tree().change_scene_to_file("res://scenes/dodge_bubbal.tscn")
 
 
 func _on_controls_pressed() -> void:
