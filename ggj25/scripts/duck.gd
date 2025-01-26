@@ -36,6 +36,10 @@ var blow_animation_playing = false
 const blow_animation_duration = 39
 var blow_animation_current_duration = 0
 
+var quacking = false
+const QUACK_COOLDOWN = 20
+var quack_duration = 0
+
 const COLOURS = [
 	Color8(255, 252, 49), # Yellow
 	Color8(255, 29, 21), # Red
@@ -110,6 +114,8 @@ func _physics_process(_delta: float) -> void:
 			blow_animation_current_duration = 0
 			blow_animations.visible = false
 		blow_animation_current_duration += 1
+		
+	quack_duration += 1
 
 	move_and_slide()
 
@@ -120,8 +126,6 @@ func dash():
 		dash_available = false
 		dash_timer.start(DASH_DURATION)
 		dash_cooldown.start(DASH_COOLDOWN)
-		audio_stream_player.pitch_scale = 1 + randf_range(0, 0.25)
-		audio_stream_player.play()
 		Input.start_joy_vibration(player_id, 0, 0.2, DASH_DURATION)
 		dash_animation.play("default")
 	
@@ -166,6 +170,7 @@ func set_direction(x: float, y: float) -> void:
 func blow() -> void:
 	blow_animation_playing = true
 	blow_animations.visible = true
+	quack()
 	var hit_bubble = false
 	if blow_hitbox.is_colliding():
 		for i in range(blow_hitbox.get_collision_count()):
@@ -181,6 +186,16 @@ func blow() -> void:
 	else:
 		Input.start_joy_vibration(player_id, 0.05, 0, 0.02)
 
+
+func quack():
+	if quacking:
+		if quack_duration > QUACK_COOLDOWN:
+			quacking = false
+	else:
+		audio_stream_player.pitch_scale = 1 + randf_range(0, 0.25)
+		audio_stream_player.play()
+		quacking = true
+		quack_duration = 0
 
 func goal_scored():
 	Input.start_joy_vibration(player_id, 0.5, 0.5, 1)
