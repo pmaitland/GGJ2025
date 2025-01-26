@@ -6,6 +6,7 @@ class_name Duck extends CharacterBody2D
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var blow_animations: Node2D = $BlowAnimations
 
 @export var sprites: Array[Texture2D]
 @export var player_id: int = 0
@@ -29,6 +30,10 @@ var dash_controller_pressed = false
 
 var current_direction = Direction.DOWN
 
+var blow_animation_playing = false
+const blow_animation_duration = 39
+var blow_animation_current_duration = 0
+
 const COLOURS = [
 	Color8(255, 252, 49), # Yellow
 	Color8(255, 29, 21), # Red
@@ -42,6 +47,9 @@ func _ready() -> void:
 	sprite.texture = sprites[0]
 	sprite.modulate = COLOURS[player_id]
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
+	for _i in blow_animations.get_children():
+		_i.modulate = COLOURS[player_id]
+		_i.play("default")
 
 
 func with_deadzone(vector: Vector2, deadzone: float = 0.3) -> Vector2:
@@ -92,6 +100,13 @@ func _physics_process(_delta: float) -> void:
 			dash()
 	
 	sprite.texture = sprites[current_direction]
+	
+	if blow_animation_playing:
+		if blow_animation_current_duration > blow_animation_duration:
+			blow_animation_playing = false
+			blow_animation_current_duration = 0
+			blow_animations.visible = false
+		blow_animation_current_duration += 1
 
 	move_and_slide()
 
@@ -137,6 +152,8 @@ func set_direction(x: float, y: float) -> void:
 
 
 func blow() -> void:
+	blow_animation_playing = true
+	blow_animations.visible = true
 	var hit_bubble = false
 	if blow_hitbox.is_colliding():
 		for i in range(blow_hitbox.get_collision_count()):

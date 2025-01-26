@@ -76,14 +76,16 @@ func _on_right_goal_bubble_collected(team_id: int) -> void:
 
 func on_goal_scored():
 	for duck in ducks:
-		duck.goal_scored()
+		if duck != null:
+			duck.goal_scored()
 	await get_tree().create_timer(1.0).timeout
 	bubble_spawner.spawn_bubble()
 
 func enable_duck_input(enable, node: Node = self):
 	for duck in ducks:
-		duck.set_input_enabled(enable)
-		print('Setting input for ', duck.name, enable)		
+		if duck != null:
+			duck.set_input_enabled(enable)
+			print('Setting input for ', duck.name, enable)
 		
 func find_ducks() -> Array[Duck]:
 	var result: Array[Duck] = []
