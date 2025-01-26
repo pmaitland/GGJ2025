@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bofofn6xs4gkf"]
 
 [ext_resource type="Script" path="res://scripts/controls_screen.gd" id="1_otywc"]
-[ext_resource type="Theme" uid="uid://ccuea4y7wgca3" path="res://default_theme.tres" id="2_rr1pe"]
+[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_rr1pe"]
 
 [node name="ControlsScreen" type="Control"]
 layout_mode = 3
