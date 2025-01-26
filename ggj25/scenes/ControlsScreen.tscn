@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bofofn6xs4gkf"]
+[gd_scene load_steps=3 format=3 uid="uid://bofofn6xs4gkf"]
 
 [ext_resource type="Script" path="res://scripts/controls_screen.gd" id="1_otywc"]
+[ext_resource type="Theme" uid="uid://cn3iirbftfycl" path="res://default_theme.tres" id="2_rr1pe"]
 
 [node name="ControlsScreen" type="Control"]
 layout_mode = 3
@@ -28,6 +29,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_rr1pe")
 theme_override_font_sizes/font_size = 64
 text = "Controls"
 horizontal_alignment = 1
@@ -35,11 +37,11 @@ horizontal_alignment = 1
 [node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 
 [node name="Keyboard" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
-visible = false
 layout_mode = 2
+theme = ExtResource("2_rr1pe")
 metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Keyboard"]
@@ -135,7 +137,9 @@ layout_mode = 2
 text = "R Ctrl"
 
 [node name="Controller" type="TabBar" parent="MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
+theme = ExtResource("2_rr1pe")
 metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TabContainer/Controller"]
@@ -183,6 +187,7 @@ text = "R Trigger"
 [node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("2_rr1pe")
 text = "Back"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cn3iirbftfycl"]
+
+[ext_resource type="FontFile" uid="uid://cvqkkkdqongif" path="res://fonts/Crayone.otf" id="1_vd7q3"]
+
+[resource]
+Button/fonts/font = ExtResource("1_vd7q3")
+Label/fonts/font = ExtResource("1_vd7q3")
+TabBar/fonts/font = ExtResource("1_vd7q3")
