@@ -115,12 +115,14 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Controls" type="Button" parent="MarginContainer2/GamePauseButtons"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Controls"
 
 [node name="Settings" type="Button" parent="MarginContainer2/GamePauseButtons"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
