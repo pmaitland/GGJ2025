@@ -3,9 +3,13 @@ class_name Bubble extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+var paused = false
+
 const FRICTION = 0.985
 const BOUNCE_SCALE = 0.8
 
+func set_paused(p: bool):
+	paused = p
 
 func _ready() -> void:
 	animated_sprite_2d.modulate = Color8(227, 161, 218)
@@ -18,6 +22,7 @@ func blow(from: Transform2D, force: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if (paused): return
 	
 	velocity *= FRICTION
 	

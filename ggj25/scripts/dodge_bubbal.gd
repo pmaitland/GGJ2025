@@ -3,6 +3,7 @@ extends Node2D
 @onready var game_timer: Timer = $GameTimer
 @onready var hud: Hud = $Hud
 @onready var bubble_spawner: BubbleSpawner = $BubbleSpawner
+@onready var bubble: Bubble = $Bubble
 
 const GAME_TIME = 60
 var started = false
@@ -45,10 +46,12 @@ func _process(delta: float) -> void:
 			game_timer.set_paused(false)
 			hud.hide_game_pause()
 			enable_duck_input(true)
+			bubble.set_paused(false)
 		else:
 			game_timer.set_paused(true)
 			hud.show_game_pause()
 			enable_duck_input(false)
+			bubble.set_paused(true)
 
 
 func format_timer(time_left: float) -> String:
@@ -81,7 +84,7 @@ func on_score():
 		if duck != null:
 			duck.goal_scored()
 	await get_tree().create_timer(1.0).timeout
-	bubble_spawner.spawn_bubble()
+	bubble = bubble_spawner.spawn_bubble()
 
 func enable_duck_input(enable, node: Node = self):
 	for duck in ducks:
