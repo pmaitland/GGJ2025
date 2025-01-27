@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://crq1dv00bhbu4"]
+[gd_scene load_steps=5 format=3 uid="uid://crq1dv00bhbu4"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_b2j7g"]
 [ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_01w2v"]
+[ext_resource type="AudioStream" uid="uid://doxtltyi27w0n" path="res://sounds/quack.wav" id="3_2tmm1"]
+[ext_resource type="AudioStream" uid="uid://bvub1an3bp2d2" path="res://sounds/quack_long.wav" id="4_kogtm"]
 
 [node name="Bubball_HUD" type="CanvasLayer"]
 script = ExtResource("1_b2j7g")
@@ -133,6 +135,13 @@ layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
+
+[node name="CountdownSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2tmm1")
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_kogtm")
+pitch_scale = 1.3
 
 [connection signal="pressed" from="MarginContainer2/GameStartButtons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/GameEndButtons/RetryButton" to="." method="_on_retry_button_pressed"]
