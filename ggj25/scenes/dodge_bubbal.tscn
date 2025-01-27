@@ -70,6 +70,7 @@ shape = SubResource("WorldBoundaryShape2D_ev84h")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_y3cxj")
 volume_db = -10.0
+bus = &"Music"
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_buhc6")]
 position = Vector2(76, 250)
