@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://olhc7phtfuy4"]
+[gd_scene load_steps=6 format=3 uid="uid://olhc7phtfuy4"]
 
 [ext_resource type="Script" path="res://scripts/game_mode_selection.gd" id="1_rwp8f"]
 [ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_6rsk5"]
 [ext_resource type="Texture2D" uid="uid://cgoccqpnsqsib" path="res://sprites/UI/bubball-screenshot.png" id="3_x7mqc"]
 [ext_resource type="Texture2D" uid="uid://bb83b42m813bh" path="res://sprites/UI/dodge_bubball_screenshot.png" id="3_x7n4a"]
+[ext_resource type="AudioStream" uid="uid://cgxi788obplu2" path="res://sounds/choices.wav" id="5_ykumx"]
 
 [node name="GameModeSelection" type="Control"]
 layout_mode = 3
@@ -84,6 +85,11 @@ size_flags_horizontal = 3
 texture = ExtResource("3_x7mqc")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ykumx")
+volume_db = -10.0
+bus = &"Music"
 
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game1" to="." method="_on_game_1_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game1" to="." method="_on_game_1_pressed"]
