@@ -33,11 +33,23 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# xD this is the same code as in bubball.gd
 	if started:
 		hud.set_timer(format_timer(game_timer.time_left))
 		hud.set_left_score(left_team_score)
 		hud.set_right_score(right_team_score)
 		
+	# handle pause
+	if Input.is_action_just_pressed("game_pause"):
+		if game_timer.is_paused():
+			game_timer.set_paused(false)
+			hud.hide_game_pause()
+			enable_duck_input(true)
+		else:
+			game_timer.set_paused(true)
+			hud.show_game_pause()
+			enable_duck_input(false)
+
 
 func format_timer(time_left: float) -> String:
 	if time_left < 10:
