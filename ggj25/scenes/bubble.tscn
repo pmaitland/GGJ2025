@@ -22,5 +22,6 @@ y_sort_enabled = true
 scale = Vector2(0.225, 0.225)
 sprite_frames = ExtResource("2_kvtkt")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="PopSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_eo50l")
+bus = &"SFX"

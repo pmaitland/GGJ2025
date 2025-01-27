@@ -51,8 +51,13 @@ one_shot = true
 [node name="DashCooldown" type="Timer" parent="."]
 one_shot = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="QuackSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_qaxuo")
+bus = &"SFX"
+
+[node name="DashSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_nwh14")
+bus = &"SFX"
 
 [node name="BlowAnimations" type="Node2D" parent="."]
 visible = false
@@ -114,9 +119,6 @@ scale = Vector2(3.065, 3.065)
 shape = SubResource("CircleShape2D_fn6sq")
 target_position = Vector2(29.0375, -0.326264)
 collision_mask = 2
-
-[node name="dashsound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_nwh14")
 
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

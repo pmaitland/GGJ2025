@@ -5,11 +5,11 @@ class_name Duck extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var dash_timer: Timer = $DashTimer
 @onready var dash_cooldown: Timer = $DashCooldown
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var quack_sound: AudioStreamPlayer = $QuackSound
+@onready var dash_sound: AudioStreamPlayer = $DashSound
 @onready var blow_animations: Node2D = $BlowAnimations
 @onready var dash_animation: AnimatedSprite2D = $dashparent/DashAnimation
 @onready var dashparent: Node2D = $dashparent
-@onready var dashsound: AudioStreamPlayer = $dashsound
 @onready var dash_hitbox: ShapeCast2D = $dashparent/DashHitbox
 
 @export var sprites: Array[Texture2D]
@@ -133,8 +133,8 @@ func dash():
 		dash_cooldown.start(DASH_COOLDOWN)
 		Input.start_joy_vibration(player_id, 0, 0.6, DASH_DURATION)
 		dash_animation.play("default", 2)
-		dashsound.pitch_scale = 1 + randf_range(0, 0.25)
-		dashsound.play()
+		dash_sound.pitch_scale = 1 + randf_range(0, 0.25)
+		dash_sound.play()
 		
 		if dash_hitbox.is_colliding():
 			for i in range(dash_hitbox.get_collision_count()):
@@ -213,8 +213,8 @@ func quack():
 		if quack_duration > QUACK_COOLDOWN:
 			quacking = false
 	else:
-		audio_stream_player.pitch_scale = 1 + randf_range(0, 0.25)
-		audio_stream_player.play()
+		quack_sound.pitch_scale = 1 + randf_range(0, 0.25)
+		quack_sound.play()
 		quacking = true
 		quack_duration = 0
 
