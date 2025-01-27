@@ -3,9 +3,13 @@ extends Control
 @onready var game_1: Button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game1
 @onready var game_2: Button = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game2
 @onready var screenshot: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/Screenshot
+@onready var music: AudioStreamPlayer = $Music
 
 @export var GAME_1_SCREENSHOT: Texture2D
 @export var GAME_2_SCREENSHOT: Texture2D
+
+func _ready() -> void:
+	music.play()
 
 
 func _on_game_1_pressed() -> void:
