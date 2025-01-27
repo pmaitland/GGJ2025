@@ -20,6 +20,8 @@ class_name Hud extends CanvasLayer
 
 
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
+@onready var countdown_sound: AudioStreamPlayer = $CountdownSound
+@onready var start_sound: AudioStreamPlayer = $StartSound
 
 @export var game_mode: int = 0 # 0 for football, 1 for dodge ball
 
@@ -42,12 +44,16 @@ func show_game_start() -> void:
 	show_message("Get Ready!")
 	await get_tree().create_timer(1.0).timeout
 	show_message("3")
+	countdown_sound.play()
 	await get_tree().create_timer(1.0).timeout
 	show_message("2")
+	countdown_sound.play()
 	await get_tree().create_timer(1.0).timeout
 	show_message("1")
+	countdown_sound.play()
 	await get_tree().create_timer(1.0).timeout
 	show_message("Go!")
+	start_sound.play()
 	await get_tree().create_timer(1.0).timeout
 	hide_message()
 	game_start_buttons.hide()
