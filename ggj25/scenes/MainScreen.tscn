@@ -117,16 +117,26 @@ theme_override_constants/separation = 10
 
 [node name="GameMode" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+focus_neighbor_bottom = NodePath("../Controls")
 theme = ExtResource("2_0dyf7")
 text = "Game Mode"
 
 [node name="Controls" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../GameMode")
+focus_neighbor_bottom = NodePath("../Settings")
+focus_next = NodePath("../Settings")
+focus_previous = NodePath("../GameMode")
 theme = ExtResource("2_0dyf7")
 text = "Controls"
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Controls")
+focus_neighbor_bottom = NodePath("../GameMode")
+focus_next = NodePath("../GameMode")
+focus_previous = NodePath("../Controls")
 theme = ExtResource("2_0dyf7")
 text = "Settings"
 

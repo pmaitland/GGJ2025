@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cvqkkkdqongif" path="res://fonts/Crayone.otf" id="1_vd7q3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u12wy"]
-bg_color = Color(0.770833, 0.75, 1, 1)
+bg_color = Color(0.878431, 0.792157, 0.376471, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nh5cr"]
 bg_color = Color(0.798333, 0.78, 1, 1)

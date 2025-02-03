@@ -4,6 +4,11 @@ extends Control
 @onready var controls: Button = $VBoxContainer/Controls
 @onready var settings: Button = $VBoxContainer/Settings
 
+
+func _ready():
+	game_mode.grab_focus()
+
+
 func _on_game_mode_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/GameModeSelection.tscn")
 
