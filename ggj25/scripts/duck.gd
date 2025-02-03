@@ -83,8 +83,6 @@ func _process(delta: float) -> void:
 	
 
 func _physics_process(_delta: float) -> void:
-	if (!input_enabled): return
-
 	var direction = get_input_direction() if not is_dashing else last_direction
 
 	if direction != Vector2.ZERO:
@@ -122,11 +120,12 @@ func _physics_process(_delta: float) -> void:
 		
 	quack_duration += 1
 
-	move_and_slide()
+	if input_enabled:
+		move_and_slide()
 
 
 func dash():
-	if dash_available:
+	if dash_available and input_enabled:
 		is_dashing = true
 		dash_available = false
 		dash_timer.start(DASH_DURATION)
