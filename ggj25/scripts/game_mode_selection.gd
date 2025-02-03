@@ -10,6 +10,7 @@ extends Control
 
 func _ready() -> void:
 	music.play()
+	game_1.grab_focus()
 
 
 func _on_game_1_pressed() -> void:

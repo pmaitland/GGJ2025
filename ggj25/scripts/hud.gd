@@ -6,7 +6,7 @@ class_name Hud extends CanvasLayer
 @onready var game_timer: Label = $MarginContainer/HBoxContainer/Timer
 @onready var countdown_message: Label = $CountdownMessage
 #Buttons
-@onready var start_button: Button = $StartButton
+@onready var start_button: Button = $MarginContainer2/GameStartButtons/StartButton
 @onready var retry_button: Button = $MarginContainer2/GameEndButtons/RetryButton
 @onready var main_menu_button: Button = $MarginContainer2/GameEndButtons/MainMenuButton
 @onready var controls: Button = $MarginContainer2/GamePauseButtons/Controls
@@ -27,6 +27,9 @@ class_name Hud extends CanvasLayer
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
+
+func _ready():
+	start_button.grab_focus()
 
 func show_message(text: String) -> void:
 	countdown_message.text = text
@@ -66,6 +69,8 @@ func show_game_pause() -> void:
 	game_timer.modulate.a = 0.75
 	show_message("Game Paused")
 	game_pause_buttons.show()
+	settings.grab_focus()
+	
 
 func hide_game_pause() -> void:
 	left_score.modulate.a = 1
@@ -83,6 +88,7 @@ func show_game_end(win_team: int) -> void:
 	else:
 		show_message("Team " + str(win_team) + " Wins!")
 	game_end_buttons.show()
+	retry_button.grab_focus()
 
 func hide_message() -> void:
 	countdown_message.hide()

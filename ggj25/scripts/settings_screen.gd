@@ -13,6 +13,7 @@ func _ready() -> void:
 	master_slider.value = db_to_linear(AudioServer.get_bus_volume_db(master_bus_index))
 	music_slider.value = db_to_linear(AudioServer.get_bus_volume_db(music_bus_index))
 	sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus_index))
+	master_slider.grab_focus()
 
 func _on_master_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(master_bus_index, linear_to_db(value))
