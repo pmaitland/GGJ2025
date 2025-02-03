@@ -192,7 +192,7 @@ func blow() -> void:
 	blow_animations.visible = true
 	quack()
 	var hit_bubble = false
-	if blow_hitbox.is_colliding():
+	if input_enabled and blow_hitbox.is_colliding():
 		for i in range(blow_hitbox.get_collision_count()):
 			var hit = blow_hitbox.get_collider(i)
 			if "name" in hit:
