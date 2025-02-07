@@ -1,18 +1,12 @@
-extends Node2D
+extends GameMode
 
-@onready var game_timer: Timer = $GameTimer
-@onready var hud: Hud = $Hud
 @onready var bubble_spawner: BubbleSpawner = $BubbleSpawner
-@onready var bubble = $Bubble
 
 const GAME_TIME = 60
-var started = false
 
 var left_team_score = 0
 var right_team_score = 0
 
-
-var ducks: Array[Duck]
 
 func _on_hud_start_game() -> void:
 	print('Bubball Started!')
@@ -23,40 +17,25 @@ func _on_hud_start_game() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super._ready()
 	game_timer.wait_time = GAME_TIME
 	hud.set_timer(str(GAME_TIME))
 	hud.setup_game()
-	ducks = find_ducks()
-	enable_duck_input(false)
 	
 	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super._process(delta)
 	if started:
 		hud.set_timer(format_timer(game_timer.time_left))
 		hud.set_left_score(left_team_score)
 		hud.set_right_score(right_team_score)
 
-		# handle pause
-		if Input.is_action_just_pressed("game_pause"):
-			if game_timer.is_paused():
-				game_timer.set_paused(false)
-				hud.hide_game_pause()
-				enable_duck_input(true)
-				bubble.set_paused(false)
-			else:
-				game_timer.set_paused(true)
-				hud.show_game_pause()
-				enable_duck_input(false)
-				bubble.set_paused(true)
-		
 
-func format_timer(time_left: float) -> String:
-	if time_left < 10:
-		return str(snappedf(time_left, 0.1))
-	
-	return str(ceil(time_left))
+
+func pause() -> void:
+	super.pause()
+	print('child pause')
 
 
 func _on_game_timer_timeout() -> void:
@@ -76,14 +55,17 @@ func get_winning_team() -> int:
 	else:
 		return 0
 
+
 func _on_left_goal_bubble_collected(team_id: int) -> void:
 	if started:
+		hud.show_message("RIGHT TEAM SCORES!")
 		right_team_score += 1
 		on_goal_scored()
 
 
 func _on_right_goal_bubble_collected(team_id: int) -> void:
 	if started:
+		hud.show_message("LEFT TEAM SCORES!")
 		left_team_score += 1
 		on_goal_scored()
 
@@ -92,18 +74,26 @@ func on_goal_scored():
 	for duck in ducks:
 		if duck != null:
 			duck.goal_scored()
-	await get_tree().create_timer(1.0).timeout
-	bubble = bubble_spawner.spawn_bubble()
+	
+	game_timer.set_paused(true)
 
-func enable_duck_input(enable, node: Node = self):
-	for duck in ducks:
-		if duck != null:
-			duck.set_input_enabled(enable)
-			print('Setting input for ', duck.name, enable)
+	enable_duck_input(false)
+	await get_tree().create_timer(2.0).timeout
+	
+	if !paused:
+		hud.show_message("Get Ready!")
+	# Reset duck positions
+	reset_duck_positions()
+	bubbles = [bubble_spawner.spawn_bubble()]
+	await get_tree().create_timer(1.0).timeout
+	
+	if paused:
+		hud.show_game_pause()
+		return
 		
-func find_ducks() -> Array[Duck]:
-	var result: Array[Duck] = []
-	for n in self.get_children():
-		if n is Duck:
-			result.append(n as Duck)
-	return result
+	hud.show_message("Go!")
+	game_timer.set_paused(false)
+	enable_duck_input(true)
+		
+	await get_tree().create_timer(0.6).timeout
+	hud.hide_message()
