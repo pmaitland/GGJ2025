@@ -1,22 +1,27 @@
 class_name Hud extends CanvasLayer
 
 #UI
-@onready var left_score: Label = $MarginContainer/HBoxContainer/LeftScore
-@onready var right_score: Label = $MarginContainer/HBoxContainer/RightScore
-@onready var game_timer: Label = $MarginContainer/HBoxContainer/Timer
+@onready var left_score: Label = $TopSection/HBoxContainer/LeftScore
+@onready var right_score: Label = $TopSection/HBoxContainer/RightScore
+@onready var game_timer: Label = $TopSection/HBoxContainer/Timer
 @onready var countdown_message: Label = $CountdownMessage
+@onready var controls_hud: CanvasLayer = $ControlsHUD
+@onready var settings_hud: CanvasLayer = $SettingsHUD
+@onready var top_section: MarginContainer = $TopSection
+@onready var middle_section: MarginContainer = $MiddleSection
+
 #Buttons
-@onready var start_button: Button = $MarginContainer2/GameStartButtons/StartButton
-@onready var retry_button: Button = $MarginContainer2/GameEndButtons/RetryButton
-@onready var main_menu_button: Button = $MarginContainer2/GameEndButtons/MainMenuButton
-@onready var controls: Button = $MarginContainer2/GamePauseButtons/Controls
-@onready var settings: Button = $MarginContainer2/GamePauseButtons/Settings
-@onready var exit: Button = $MarginContainer2/GamePauseButtons/Exit
+@onready var start_button: Button = $MiddleSection/GameStartButtons/StartButton
+@onready var retry_button: Button = $MiddleSection/GameEndButtons/RetryButton
+@onready var main_menu_button: Button = $MiddleSection/GameEndButtons/MainMenuButton
+@onready var controls: Button = $MiddleSection/GamePauseButtons/Controls
+@onready var settings: Button = $MiddleSection/GamePauseButtons/Settings
+@onready var exit: Button = $MiddleSection/GamePauseButtons/Exit
 
 
-@onready var game_start_buttons: VBoxContainer = $MarginContainer2/GameStartButtons
-@onready var game_end_buttons: VBoxContainer = $MarginContainer2/GameEndButtons
-@onready var game_pause_buttons: VBoxContainer = $MarginContainer2/GamePauseButtons
+@onready var game_start_buttons: VBoxContainer = $MiddleSection/GameStartButtons
+@onready var game_end_buttons: VBoxContainer = $MiddleSection/GameEndButtons
+@onready var game_pause_buttons: VBoxContainer = $MiddleSection/GamePauseButtons
 
 
 @onready var audio_stream_player: AudioStreamPlayer = $"../AudioStreamPlayer"
@@ -27,6 +32,7 @@ class_name Hud extends CanvasLayer
 
 # Notifies `Main` node that the button has been pressed
 signal start_game
+signal unpause_game
 
 func _ready():
 	start_button.grab_focus()
@@ -120,8 +126,32 @@ func _on_retry_button_pressed() -> void:
 
 
 func _on_controls_pressed() -> void:
-	SceneManager.go_to_scene("res://scenes/ControlsScreen.tscn")
+	top_section.hide()
+	middle_section.hide()
+	countdown_message.hide()
+	controls_hud.show()
 
 
 func _on_settings_pressed() -> void:
-	SceneManager.go_to_scene("res://scenes/SettingsScreen.tscn")
+	top_section.hide()
+	middle_section.hide()
+	countdown_message.hide()
+	settings_hud.show()
+
+
+
+func _on_controls_hud_go_back() -> void:
+	controls_hud.hide()
+	top_section.show()
+	middle_section.show()
+	countdown_message.show()
+
+func _on_settings_hud_go_back() -> void:
+	settings_hud.hide()
+	top_section.show()
+	middle_section.show()
+	countdown_message.show()
+
+
+func _on_continue_pressed() -> void:
+	unpause_game.emit()

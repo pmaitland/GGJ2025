@@ -28,8 +28,7 @@ func _ready() -> void:
 	hud.setup_game()
 	ducks = find_ducks()
 	enable_duck_input(false)
-	
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,12 +39,7 @@ func _process(delta: float) -> void:
 
 		# handle pause
 		if Input.is_action_just_pressed("game_pause"):
-			if game_timer.is_paused():
-				game_timer.set_paused(false)
-				hud.hide_game_pause()
-				enable_duck_input(true)
-				bubble.set_paused(false)
-			else:
+			if not game_timer.is_paused():
 				game_timer.set_paused(true)
 				hud.show_game_pause()
 				enable_duck_input(false)
@@ -107,3 +101,10 @@ func find_ducks() -> Array[Duck]:
 		if n is Duck:
 			result.append(n as Duck)
 	return result
+
+
+func _on_hud_unpause_game() -> void:
+	game_timer.set_paused(false)
+	hud.hide_game_pause()
+	enable_duck_input(true)
+	bubble.set_paused(false)
