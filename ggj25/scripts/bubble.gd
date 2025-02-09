@@ -35,10 +35,11 @@ func pop():
 	animated_sprite_2d.play("pop")
 	pop_sound.pitch_scale = 1 + randf_range(0, 0.25)
 	pop_sound.play()
-	set_collision_layer_value(2, false)
+	set_collision_layer_value(Enums.CollisionLayer.BUBBLES, false)
 	velocity = Vector2.ZERO
 	await get_tree().create_timer(5.0).timeout
 	queue_free()
+
 
 func collect():
 	# sound / animation then delete
