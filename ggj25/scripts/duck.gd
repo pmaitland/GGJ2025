@@ -53,8 +53,8 @@ const COLOURS = [
 ]
 
 func _ready() -> void:
-	if (player_id >= 2 and !is_controller()):
-		queue_free()
+	if !PlayerManager.is_joined(player_id):
+		visible = false
 	sprite.texture = sprites[0]
 	sprite.modulate = COLOURS[player_id]
 	dash_animation.modulate = COLOURS[player_id]
@@ -79,10 +79,13 @@ func is_controller():
 
 
 func _process(delta: float) -> void:
+	visible = PlayerManager.is_joined(player_id)
 	if !Input.is_joy_button_pressed(player_id, JOY_BUTTON_A): dash_controller_pressed = false
 	
 
 func _physics_process(_delta: float) -> void:
+	if (!PlayerManager.is_joined(player_id)): return
+	
 	var direction = get_input_direction() if not is_dashing else last_direction
 
 	if direction != Vector2.ZERO:

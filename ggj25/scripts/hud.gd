@@ -104,6 +104,7 @@ func set_timer(time: String) -> void:
 
 func _on_start_button_pressed() -> void:
 	game_start_buttons.hide()
+	PlayerManager.set_joining_enabled(false)
 	show_game_start()
 
 func _on_exit_pressed() -> void:
