@@ -61,11 +61,11 @@ func show_game_start() -> void:
 	countdown_sound.play()
 	await get_tree().create_timer(1.0).timeout
 	show_message("Go!")
+	start_game.emit()
 	start_sound.play()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.7).timeout
 	hide_message()
 	game_start_buttons.hide()
-	start_game.emit()
 	audio_stream_player.play()
 
 func show_game_pause() -> void:
