@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 
 
 func _handle_joined_device(device_id: int, delta: float) -> void:
-	_track_held_time(device_id, JOY_BUTTON_B, delta)
+	_track_held_time(device_id, "p%s_leave" % device_id, delta)
 	
 	if button_held_time[device_id] >= HOLD_TIME:
 		_unjoin(device_id)
@@ -37,14 +37,14 @@ func _handle_joined_device(device_id: int, delta: float) -> void:
 
 
 func _handle_unjoined_device(device_id: int, delta: float) -> void:
-	_track_held_time(device_id, JOY_BUTTON_A, delta)
+	_track_held_time(device_id, "p%s_join" % device_id, delta)
 	
 	if button_held_time[device_id] >= HOLD_TIME:
 		_join(device_id)
 
 
-func _track_held_time(device_id, button: JoyButton, delta: float) -> void:
-	if Input.is_joy_button_pressed(device_id, button):  # TODO: replace with an action once action refactoring merged
+func _track_held_time(device_id, action: StringName, delta: float) -> void:
+	if Input.is_action_pressed(action):
 		button_held_time[device_id] += delta
 	else:
 		button_held_time[device_id] = 0

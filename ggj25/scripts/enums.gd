@@ -1,3 +1,5 @@
+class_name Enums
+
 
 enum CollisionLayer {
 	DUCKS = 1,
