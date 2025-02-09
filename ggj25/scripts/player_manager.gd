@@ -77,7 +77,7 @@ func is_joined(player_id: int) -> bool:
 
 
 func is_controller_connected(device_id: int) -> bool:
-	return Input.get_connected_joypads().has(device_id)
+	return device_id < 2 or Input.get_connected_joypads().has(device_id)
 
 
 ## Progress of join/unjoin button being held (0-1)
