@@ -76,7 +76,7 @@ func is_controller():
 	return player_id in Input.get_connected_joypads()
 
 
-func _process(_add_constant_forcedelta: float) -> void:
+func _process(delta: float) -> void:
 	visible = PlayerManager.is_joined(player_id)
 	
 
