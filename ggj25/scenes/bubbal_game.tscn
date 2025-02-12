@@ -16,6 +16,7 @@ distance = 30.25
 y_sort_enabled = true
 position = Vector2(101, 59)
 script = ExtResource("1_pxbye")
+GAME_TIME = 5
 
 [node name="Background" parent="." instance=ExtResource("2_8838l")]
 position = Vector2(477, 263)
@@ -88,6 +89,7 @@ position = Vector2(781, 181)
 player_id = 3
 
 [node name="GameTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="BubbleSpawner" parent="." instance=ExtResource("7_onqcw")]
 position = Vector2(476, 313)
