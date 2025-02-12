@@ -4,6 +4,7 @@ class_name GameMode extends Node2D
 @onready var game_timer: Timer = $GameTimer
 
 @export var GAME_TIME = 60
+@export var OVERTIME_ENABLED = true
 
 var ducks: Array[Duck]
 var initial_positions: Array[Vector2]
@@ -48,12 +49,17 @@ func _process(delta: float) -> void:
 		
 		# Update HUD scores
 		if hud and scores.size() == 2:
-			hud.set_left_score(scores[LEFT_TEAM])
-			hud.set_right_score(scores[RIGHT_TEAM])
-		
+			update_scoreboard()
+			
 		# Update HUD game timer
 		if hud and game_timer:
 			hud.set_timer(format_timer(game_timer.time_left))
+
+
+
+func update_scoreboard():
+	hud.set_left_score(scores[LEFT_TEAM])
+	hud.set_right_score(scores[RIGHT_TEAM])
 
 
 func start_game():
@@ -67,8 +73,6 @@ func finish_game():
 		print('Game finished!')
 		started = false
 		enable_duck_input(false)
-		if hud and game_timer:
-			hud.set_timer("0")
 		
 		if hud:
 			if is_tie():
