@@ -16,7 +16,6 @@ distance = 30.25
 y_sort_enabled = true
 position = Vector2(101, 59)
 script = ExtResource("1_pxbye")
-GAME_TIME = 5
 
 [node name="Background" parent="." instance=ExtResource("2_8838l")]
 position = Vector2(477, 263)
