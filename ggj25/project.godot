@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="GGJ25"
-run/main_scene="res://scenes/MainScreen.tscn"
+run/main_scene="res://scenes/screens/MainScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://scripts/SceneManager.gd"
-PlayerManager="*res://scripts/player_manager.gd"
+SceneManager="*res://scripts/globals/SceneManager.gd"
+PlayerManager="*res://scripts/globals/player_manager.gd"
 Constants="*res://scripts/constants.gd"
 
 [display]

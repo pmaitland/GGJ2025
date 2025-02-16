@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bnfisykkl2cb6"]
 
-[ext_resource type="Script" path="res://scripts/duck.gd" id="1_x1n4u"]
+[ext_resource type="Script" path="res://scripts/game_mode/ingame_scripts/duck.gd" id="1_x1n4u"]
 [ext_resource type="Texture2D" uid="uid://cc8b34nnsxb8j" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
 [ext_resource type="Texture2D" uid="uid://bg03fuc1dpl2k" path="res://sprites/duck/duck1.png" id="3_n6wtr"]
 [ext_resource type="Texture2D" uid="uid://h4qs1b1gs371" path="res://sprites/duck/duck2.png" id="4_p8rtf"]

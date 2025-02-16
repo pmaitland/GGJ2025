@@ -14,16 +14,16 @@ func _ready() -> void:
 
 
 func _on_game_1_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/bubbal_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/game_modes/bubbal_game.tscn")
 
 
 func _on_game_2_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/dodge_bubbal.tscn")
+	get_tree().change_scene_to_file("res://scenes/game_modes/dodge_bubbal.tscn")
 
 
 
 func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/MainScreen.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/MainScreen.tscn")
 
 
 func _on_game_1_mouse_entered() -> void:

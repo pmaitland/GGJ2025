@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bioxevgxmkxd5"]
 
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_4l6v3"]
-[ext_resource type="Script" path="res://scripts/goal.gd" id="1_h841x"]
+[ext_resource type="Script" path="res://scripts/game_mode/ingame_scripts/goal.gd" id="1_h841x"]
 [ext_resource type="Texture2D" uid="uid://yynoten0w6hw" path="res://sprites/Plughole.png" id="2_px0qg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xgfoj"]
