@@ -1,33 +1,33 @@
 [gd_scene load_steps=9 format=3 uid="uid://ci6kt24w05cm2"]
 
-[ext_resource type="Script" path="res://scripts/dodge_bubbal.gd" id="1_tn0gj"]
-[ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/duck.tscn" id="2_buhc6"]
-[ext_resource type="PackedScene" uid="uid://b4j1cmrmcuhvm" path="res://scenes/background.tscn" id="2_hjagh"]
-[ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/bubble.tscn" id="3_xn0wj"]
-[ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/Bubball_HUD.tscn" id="4_8n1yk"]
-[ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/BubbleSpawner.tscn" id="6_521ov"]
-[ext_resource type="AudioStream" uid="uid://ob8hhxoeng52" path="res://sounds/bathtime.wav" id="6_y3cxj"]
+[ext_resource type="Script" path="res://scripts/game_mode/dodge_bubbal.gd" id="1_b805a"]
+[ext_resource type="PackedScene" uid="uid://b4j1cmrmcuhvm" path="res://scenes/game_modes/ingame_scenes/background.tscn" id="2_mmwc4"]
+[ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/game_modes/ingame_scenes/duck.tscn" id="3_guwru"]
+[ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/game_modes/ingame_scenes/bubble.tscn" id="4_c2ol7"]
+[ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/ui/Bubball_HUD.tscn" id="5_e11kd"]
+[ext_resource type="AudioStream" uid="uid://ob8hhxoeng52" path="res://sounds/bathtime.wav" id="6_rp6ij"]
+[ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/game_modes/ingame_scenes/BubbleSpawner.tscn" id="7_2y6h4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ev84h"]
 distance = 30.25
 
 [node name="DodgeBubbal" type="Node2D"]
 position = Vector2(102, 58)
-script = ExtResource("1_tn0gj")
+script = ExtResource("1_b805a")
 
-[node name="Background" parent="." instance=ExtResource("2_hjagh")]
+[node name="Background" parent="." instance=ExtResource("2_mmwc4")]
 position = Vector2(477, 263)
 
-[node name="duck1" parent="." instance=ExtResource("2_buhc6")]
+[node name="duck1" parent="." instance=ExtResource("3_guwru")]
 position = Vector2(230, 100)
 
-[node name="Bubble" parent="." instance=ExtResource("3_xn0wj")]
+[node name="Bubble" parent="." instance=ExtResource("4_c2ol7")]
 position = Vector2(476, 312)
 
-[node name="Hud" parent="." instance=ExtResource("4_8n1yk")]
+[node name="Hud" parent="." instance=ExtResource("5_e11kd")]
 game_mode = 1
 
-[node name="duck2" parent="." instance=ExtResource("2_buhc6")]
+[node name="duck2" parent="." instance=ExtResource("3_guwru")]
 position = Vector2(920, 329)
 player_id = 1
 
@@ -68,21 +68,21 @@ rotation = -3.14159
 shape = SubResource("WorldBoundaryShape2D_ev84h")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_y3cxj")
+stream = ExtResource("6_rp6ij")
 volume_db = -10.0
 bus = &"Music"
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_buhc6")]
+[node name="CharacterBody2D" parent="." instance=ExtResource("3_guwru")]
 position = Vector2(76, 250)
 player_id = 2
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("2_buhc6")]
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_guwru")]
 position = Vector2(772, 482)
 player_id = 3
 
 [node name="GameTimer" type="Timer" parent="."]
 
-[node name="BubbleSpawner" parent="." instance=ExtResource("6_521ov")]
+[node name="BubbleSpawner" parent="." instance=ExtResource("7_2y6h4")]
 position = Vector2(476, 313)
 
 [connection signal="collided_with_bubble" from="duck1" to="." method="_on_duck_collided_with_bubble"]

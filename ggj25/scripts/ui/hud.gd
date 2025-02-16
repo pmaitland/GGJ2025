@@ -107,16 +107,16 @@ func _on_start_button_pressed() -> void:
 	show_game_start()
 
 func _on_exit_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/GameModeSelection.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/GameModeSelection.tscn")
 
 
 func _on_main_menu_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/MainScreen.tscn")
+	get_tree().change_scene_to_file("res://scenes/screens/MainScreen.tscn")
 
 
 func _on_retry_button_pressed() -> void:
-	if game_mode == 0: get_tree().change_scene_to_file("res://scenes/bubbal_game.tscn")
-	elif game_mode == 1: get_tree().change_scene_to_file("res://scenes/dodge_bubbal.tscn")
+	if game_mode == 0: get_tree().change_scene_to_file("res://scenes/game_modes/bubbal_game.tscn")
+	elif game_mode == 1: get_tree().change_scene_to_file("res://scenes/game_modes/dodge_bubbal.tscn")
 
 
 func _on_controls_pressed() -> void:

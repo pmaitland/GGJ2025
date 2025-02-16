@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://olhc7phtfuy4"]
 
-[ext_resource type="Script" path="res://scripts/game_mode_selection.gd" id="1_rwp8f"]
-[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_6rsk5"]
-[ext_resource type="Texture2D" uid="uid://cgoccqpnsqsib" path="res://sprites/UI/bubball-screenshot.png" id="3_x7mqc"]
-[ext_resource type="Texture2D" uid="uid://bb83b42m813bh" path="res://sprites/UI/dodge_bubball_screenshot.png" id="3_x7n4a"]
-[ext_resource type="AudioStream" uid="uid://cgxi788obplu2" path="res://sounds/choices.wav" id="5_ykumx"]
+[ext_resource type="Script" path="res://scripts/screens/game_mode_selection.gd" id="1_b3e5x"]
+[ext_resource type="Texture2D" uid="uid://cgoccqpnsqsib" path="res://sprites/UI/bubball-screenshot.png" id="2_eegnf"]
+[ext_resource type="Texture2D" uid="uid://bb83b42m813bh" path="res://sprites/UI/dodge_bubball_screenshot.png" id="3_f814k"]
+[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="4_gfu24"]
+[ext_resource type="AudioStream" uid="uid://cgxi788obplu2" path="res://sounds/choices.wav" id="5_h0ocy"]
 
 [node name="GameModeSelection" type="Control"]
 layout_mode = 3
@@ -13,9 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rwp8f")
-GAME_1_SCREENSHOT = ExtResource("3_x7mqc")
-GAME_2_SCREENSHOT = ExtResource("3_x7n4a")
+script = ExtResource("1_b3e5x")
+GAME_1_SCREENSHOT = ExtResource("2_eegnf")
+GAME_2_SCREENSHOT = ExtResource("3_f814k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -44,7 +44,7 @@ theme_override_constants/separation = 50
 
 [node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6rsk5")
+theme = ExtResource("4_gfu24")
 theme_override_font_sizes/font_size = 64
 text = "Game Modes"
 horizontal_alignment = 1
@@ -62,12 +62,12 @@ theme_override_constants/separation = 20
 
 [node name="Game1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6rsk5")
+theme = ExtResource("4_gfu24")
 text = "Bubball"
 
 [node name="Game2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6rsk5")
+theme = ExtResource("4_gfu24")
 text = "Dodge Bubball"
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -75,19 +75,19 @@ layout_mode = 2
 
 [node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6rsk5")
+theme = ExtResource("4_gfu24")
 text = "Back To Main Menu"
 
 [node name="Screenshot" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_x7mqc")
+texture = ExtResource("2_eegnf")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ykumx")
+stream = ExtResource("5_h0ocy")
 volume_db = -10.0
 bus = &"Music"
 
