@@ -12,7 +12,7 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_u41tq"]
 distance = 30.25
 
-[node name="Node2D" type="Node2D"]
+[node name="BubbalGame" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(101, 59)
 script = ExtResource("1_pxbye")
@@ -88,6 +88,7 @@ position = Vector2(781, 181)
 player_id = 3
 
 [node name="GameTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="BubbleSpawner" parent="." instance=ExtResource("7_onqcw")]
 position = Vector2(476, 313)

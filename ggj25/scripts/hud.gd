@@ -41,6 +41,11 @@ func show_message(text: String) -> void:
 	countdown_message.text = text
 	countdown_message.show()
 
+
+func show_scores_message(team_name: String) -> void:
+	show_message(("%s SCORES!" % team_name).to_upper())
+
+
 func setup_game() -> void:
 	left_score.text = "0"
 	right_score.text = "0"
@@ -62,11 +67,11 @@ func show_game_start() -> void:
 	countdown_sound.play()
 	await get_tree().create_timer(1.0).timeout
 	show_message("Go!")
+	start_game.emit()
 	start_sound.play()
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.7).timeout
 	hide_message()
 	game_start_buttons.hide()
-	start_game.emit()
 	audio_stream_player.play()
 
 func show_game_pause() -> void:
@@ -85,14 +90,14 @@ func hide_game_pause() -> void:
 	game_pause_buttons.hide()
 	hide_message()
 
-func show_game_end(win_team: int) -> void:
+func show_game_end(win_team: int, team_name: String = "") -> void:
 	game_timer.modulate = Color(1, 0, 0, 1)
 	show_message("Finish!")
 	await get_tree().create_timer(1.0).timeout
-	if win_team == 0:
+	if win_team == GameMode.TEAM_ID_GAME_TIED:
 		show_message("It's a Draw!")
 	else:
-		show_message("Team " + str(win_team) + " Wins!")
+		show_message("%s Wins!" % team_name)
 	game_end_buttons.show()
 	retry_button.grab_focus()
 
@@ -110,6 +115,7 @@ func set_timer(time: String) -> void:
 
 func _on_start_button_pressed() -> void:
 	game_start_buttons.hide()
+	PlayerManager.set_joining_enabled(false)
 	show_game_start()
 
 func _on_exit_pressed() -> void:

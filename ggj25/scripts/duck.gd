@@ -31,8 +31,6 @@ var is_dashing = false
 var dash_available = true
 var last_direction = Vector2.DOWN
 
-var dash_controller_pressed = false
-
 var current_direction = Direction.DOWN
 
 var blow_animation_playing = false
@@ -53,8 +51,8 @@ const COLOURS = [
 ]
 
 func _ready() -> void:
-	if (player_id >= 2 and !is_controller()):
-		queue_free()
+	if !PlayerManager.is_joined(player_id):
+		visible = false
 	sprite.texture = sprites[0]
 	sprite.modulate = COLOURS[player_id]
 	dash_animation.modulate = COLOURS[player_id]
@@ -79,10 +77,12 @@ func is_controller():
 
 
 func _process(delta: float) -> void:
-	if !Input.is_joy_button_pressed(player_id, JOY_BUTTON_A): dash_controller_pressed = false
+	visible = PlayerManager.is_joined(player_id)
 	
 
 func _physics_process(_delta: float) -> void:
+	if (!PlayerManager.is_joined(player_id)): return
+	
 	var direction = get_input_direction() if not is_dashing else last_direction
 
 	if direction != Vector2.ZERO:
@@ -93,21 +93,11 @@ func _physics_process(_delta: float) -> void:
 	velocity = velocity.move_toward(desired_velocity, (ACCELERATION if velocity.length() <= SPEED and not is_dashing else DASH_ACCELERATION))
 	
 	
-	if is_controller():
-		if Input.get_joy_axis(player_id, JOY_AXIS_TRIGGER_RIGHT) > 0.3 or Input.is_joy_button_pressed(player_id, JOY_BUTTON_B): 
-			blow()
-	else:
-		if Input.is_action_pressed("p%s_blow" % player_id):
-			blow()	
+	if Input.is_action_pressed("p%s_blow" % player_id):
+		blow()	
 	
-	
-	if is_controller():
-		if Input.is_joy_button_pressed(player_id, JOY_BUTTON_A) and !dash_controller_pressed:
-			dash_controller_pressed = true
-			dash()
-	else:
-		if Input.is_action_just_pressed("p%s_dash" % player_id):
-			dash()
+	if Input.is_action_just_pressed("p%s_dash" % player_id):
+		dash()
 	
 	sprite.texture = sprites[current_direction]
 	
@@ -145,8 +135,6 @@ func dash():
 	
 
 func get_input_direction():
-	if is_controller():
-		return with_deadzone(Vector2(Input.get_joy_axis(player_id, JOY_AXIS_LEFT_X), Input.get_joy_axis(player_id, JOY_AXIS_LEFT_Y))).normalized()
 	return Input.get_vector("p%s_move_left" % player_id, "p%s_move_right" % player_id, "p%s_move_up" % player_id, "p%s_move_down" % player_id).normalized()
 	
 
@@ -190,16 +178,17 @@ func set_direction(x: float, y: float) -> void:
 func blow() -> void:
 	blow_animation_playing = true
 	blow_animations.visible = true
-	quack()
 	var hit_bubble = false
-	if input_enabled and blow_hitbox.is_colliding():
-		for i in range(blow_hitbox.get_collision_count()):
-			var hit = blow_hitbox.get_collider(i)
-			if "name" in hit:
-				pass
-			if hit and hit.has_method("blow"):
-				hit_bubble = true
-				hit.call("blow", global_transform, BLOW_FORCE)
+	if input_enabled:
+		quack()
+		if blow_hitbox.is_colliding():
+			for i in range(blow_hitbox.get_collision_count()):
+				var hit = blow_hitbox.get_collider(i)
+				if "name" in hit:
+					pass
+				if hit and hit.has_method("blow"):
+					hit_bubble = true
+					hit.call("blow", global_transform, BLOW_FORCE)
 	
 	if hit_bubble:
 		Input.start_joy_vibration(player_id, 0.2, 0, 0.02)
@@ -236,7 +225,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func die_and_flash():
 	sprite.modulate = Color8(220,220,220)
 	
-	for i in range(0,8):	
+	for i in range(0,8):
 		await get_tree().create_timer(0.0625).timeout
 		sprite.visible = false
 		await get_tree().create_timer(0.0625).timeout
