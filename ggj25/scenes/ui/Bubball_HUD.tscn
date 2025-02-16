@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crq1dv00bhbu4"]
+[gd_scene load_steps=7 format=3 uid="uid://crq1dv00bhbu4"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_b2j7g"]
 [ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_01w2v"]
@@ -28,7 +28,7 @@ theme_override_font_sizes/font_size = 64
 text = "READY?"
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="TopSection" type="MarginContainer" parent="."]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -38,23 +38,23 @@ offset_bottom = 117.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 25
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="TopSection"]
 layout_mode = 2
 color = Color(1, 0.811765, 0.917647, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TopSection"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="LeftScore" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="LeftScore" type="Label" parent="TopSection/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
 theme_override_font_sizes/font_size = 48
 text = "0"
 
-[node name="Timer" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Timer" type="Label" parent="TopSection/HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -64,7 +64,7 @@ theme_override_font_sizes/font_size = 32
 text = "1.10"
 horizontal_alignment = 1
 
-[node name="RightScore" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="RightScore" type="Label" parent="TopSection/HBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_colors/font_color = Color(0.133333, 0.133333, 0.133333, 1)
@@ -72,7 +72,7 @@ theme_override_font_sizes/font_size = 48
 text = "0"
 horizontal_alignment = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="MiddleSection" type="MarginContainer" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -85,57 +85,68 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 50
 
-[node name="GameStartButtons" type="VBoxContainer" parent="MarginContainer2"]
+[node name="GameStartButtons" type="VBoxContainer" parent="MiddleSection"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="StartButton" type="Button" parent="MarginContainer2/GameStartButtons"]
+[node name="StartButton" type="Button" parent="MiddleSection/GameStartButtons"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "START"
 
-[node name="GameEndButtons" type="VBoxContainer" parent="MarginContainer2"]
+[node name="GameEndButtons" type="VBoxContainer" parent="MiddleSection"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="RetryButton" type="Button" parent="MarginContainer2/GameEndButtons"]
+[node name="RetryButton" type="Button" parent="MiddleSection/GameEndButtons"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Retry"
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer2/GameEndButtons"]
+[node name="MainMenuButton" type="Button" parent="MiddleSection/GameEndButtons"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
-[node name="GamePauseButtons" type="VBoxContainer" parent="MarginContainer2"]
+[node name="GamePauseButtons" type="VBoxContainer" parent="MiddleSection"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Controls" type="Button" parent="MarginContainer2/GamePauseButtons"]
-visible = false
+[node name="Continue" type="Button" parent="MiddleSection/GamePauseButtons"]
+layout_mode = 2
+theme = ExtResource("2_01w2v")
+theme_override_font_sizes/font_size = 32
+text = "Continue"
+
+[node name="Controls" type="Button" parent="MiddleSection/GamePauseButtons"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Controls"
 
-[node name="Settings" type="Button" parent="MarginContainer2/GamePauseButtons"]
+[node name="Settings" type="Button" parent="MiddleSection/GamePauseButtons"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
-[node name="Exit" type="Button" parent="MarginContainer2/GamePauseButtons"]
+[node name="Exit" type="Button" parent="MiddleSection/GamePauseButtons"]
 layout_mode = 2
 theme = ExtResource("2_01w2v")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
+
+[node name="ControlsHUD" parent="." instance=ExtResource("3_j4cyy")]
+visible = false
+
+[node name="SettingsHUD" parent="." instance=ExtResource("4_ci2xw")]
+visible = false
 
 [node name="CountdownSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_2tmm1")
@@ -146,9 +157,12 @@ stream = ExtResource("4_kogtm")
 pitch_scale = 1.3
 bus = &"SFX"
 
-[connection signal="pressed" from="MarginContainer2/GameStartButtons/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/GameEndButtons/RetryButton" to="." method="_on_retry_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/GameEndButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/GamePauseButtons/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="MarginContainer2/GamePauseButtons/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MarginContainer2/GamePauseButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MiddleSection/GameStartButtons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MiddleSection/GameEndButtons/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="MiddleSection/GameEndButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MiddleSection/GamePauseButtons/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MiddleSection/GamePauseButtons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="MiddleSection/GamePauseButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MiddleSection/GamePauseButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="go_back" from="ControlsHUD" to="." method="_on_controls_hud_go_back"]
+[connection signal="go_back" from="SettingsHUD" to="." method="_on_settings_hud_go_back"]
