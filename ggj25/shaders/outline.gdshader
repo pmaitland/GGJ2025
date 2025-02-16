@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
 uniform vec4 line_color : source_color = vec4(1);
-uniform float line_thickness : hint_range(0, 10) = 1.0;
+uniform float line_thickness : hint_range(0, 25) = 1.0;
 uniform vec4 body_colour : source_color = vec4(1);
 
 void fragment() {

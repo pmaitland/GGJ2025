@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 SceneManager="*res://scripts/globals/SceneManager.gd"
 PlayerManager="*res://scripts/globals/player_manager.gd"
-Constants="*res://scripts/constants.gd"
+Constants="*res://scripts/globals/colors.gd"
 
 [display]
 

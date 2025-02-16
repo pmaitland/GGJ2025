@@ -8,7 +8,7 @@
 resource_local_to_scene = true
 shader = ExtResource("1_4l6v3")
 shader_parameter/line_color = Color(1, 0.313726, 1, 1)
-shader_parameter/line_thickness = 10.0
+shader_parameter/line_thickness = 20.0
 shader_parameter/body_colour = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uvum"]
