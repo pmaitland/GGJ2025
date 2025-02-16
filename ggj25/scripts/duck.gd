@@ -14,6 +14,7 @@ class_name Duck extends CharacterBody2D
 
 @export var sprites: Array[Texture2D]
 @export var player_id: int = 0
+@export var team_id: int = 0
 
 enum Direction { DOWN, DOWN_LEFT, LEFT, UP_LEFT, UP, UP_RIGHT, RIGHT, DOWN_RIGHT }
 const SPEED = 250.0
@@ -42,20 +43,28 @@ signal collided_with_bubble
 var quacking = false
 const QUACK_COOLDOWN = 20
 var quack_duration = 0
+	
 
+func init_colors() -> void:
+	sprite.texture = sprites[0]
+	sprite.material.set_shader_parameter("body_colour", Constants.DUCK_COLOURS[player_id]) 
+	sprite.material.set_shader_parameter("line_color", Constants.TEAM_COLOURS[team_id])
+	dash_animation.modulate = Constants.DUCK_COLOURS[player_id]
+	
 func _ready() -> void:
 	if !PlayerManager.is_joined(player_id):
 		visible = false
-	sprite.texture = sprites[0]
-	sprite.material.set_shader_parameter("body_colour", Constants.DUCK_COLOURS[player_id]) 
-	sprite.material.set_shader_parameter("line_color", Constants.TEAM_COLOURS[0] if player_id%2 == 0 else Constants.TEAM_COLOURS[1])
-	dash_animation.modulate = Constants.DUCK_COLOURS[player_id]
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
 	for _i in blow_animations.get_children():
 		_i.modulate = Constants.DUCK_COLOURS[player_id]
 		_i.play("default")
 
 
+func set_team_id(_team_id) -> void:
+	team_id = _team_id
+	init_colors()
+	print("Duck {player_id} assigned to team id: {team_id}".format({"player_id":player_id, "team_id":team_id}))
+	
 func with_deadzone(vector: Vector2, deadzone: float = 0.3) -> Vector2:
 	if abs(vector.length()) < deadzone:
 		return Vector2.ZERO
