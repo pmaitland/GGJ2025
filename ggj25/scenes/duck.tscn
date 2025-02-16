@@ -14,6 +14,19 @@
 [ext_resource type="SpriteFrames" uid="uid://c8ygvrw21qg66" path="res://sprites/dash/dash.tres" id="12_vcajh"]
 [ext_resource type="AudioStream" uid="uid://d0ge3j5uqi6wa" path="res://sounds/dash.wav" id="13_nwh14"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp1sc"]
+resource_local_to_scene = true
+shader = ExtResource("10_fbosy")
+shader_parameter/line_color = Color(1, 0.247059, 1, 1)
+shader_parameter/line_thickness = 20.0
+shader_parameter/body_colour = Color(0.659732, 0.514269, 0.881368, 1)
+shader_parameter/tint_factor = 0.5
+shader_parameter/fade = 1.0
+shader_parameter/pattern = 1
+shader_parameter/inside = false
+shader_parameter/add_margins = false
+shader_parameter/number_of_images = Vector2(1, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_yihvp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cyk58"]
