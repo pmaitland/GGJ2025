@@ -26,6 +26,7 @@ func _ready() -> void:
 	find_ducks()
 	find_bubbles()
 	enable_duck_input(false)
+	init_team_scores()
 	init_teams()
 	if game_timer:
 		game_timer.wait_time = GAME_TIME
@@ -35,11 +36,24 @@ func _ready() -> void:
 		hud.setup_game()
 
 
-func init_teams(teams: int = 2):
+func init_team_scores(no_of_teams: int = 2):
 	scores = []
-	scores.resize(teams)
+	scores.resize(no_of_teams)
 	scores.fill(0)
-
+	
+	
+func init_teams(no_of_teams:int = 2) -> void: 
+	var available_teams = Array(PackedInt32Array(range(no_of_teams)))
+	for duck in ducks:
+		var duck_inx = ducks.find(duck)
+		for no in no_of_teams:
+			if no in available_teams and duck_inx % (no + 1) == 0:
+				duck.set_team_id(no)
+				#remove team from available teams 
+				available_teams.remove_at(available_teams.find(no))
+				if not len(available_teams):
+					# reset available teams if used up
+					available_teams = Array(PackedInt32Array(range(no_of_teams)))
 
 func _process(delta: float) -> void:
 	if started:
@@ -156,7 +170,7 @@ func format_timer(time_left: float) -> String:
 
 # TODO: disconnect device id from team id
 func get_team(player_id: int) -> int:
-	return player_id % 2
+	return ducks[player_id].team_id
 
 
 func get_opposing_team(player_id: int) -> int:
