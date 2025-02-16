@@ -87,6 +87,7 @@ position = Vector2(476, 313)
 
 [connection signal="collided_with_bubble" from="duck1" to="." method="_on_duck_collided_with_bubble"]
 [connection signal="start_game" from="Hud" to="." method="_on_hud_start_game"]
+[connection signal="unpause_game" from="Hud" to="." method="_on_hud_unpause_game"]
 [connection signal="collided_with_bubble" from="duck2" to="." method="_on_duck_collided_with_bubble"]
 [connection signal="collided_with_bubble" from="CharacterBody2D" to="." method="_on_duck_collided_with_bubble"]
 [connection signal="collided_with_bubble" from="CharacterBody2D2" to="." method="_on_duck_collided_with_bubble"]

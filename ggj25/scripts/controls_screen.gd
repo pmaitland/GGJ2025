@@ -1,5 +1,4 @@
 extends Control
 
-
-func _on_back_button_pressed() -> void:
+func _on_controls_hud_go_back() -> void:
 	SceneManager.go_back()

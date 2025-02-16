@@ -73,8 +73,6 @@ func on_goal_scored(team_id: int):
 	else:
 		reset_positions_and_start()
 
-
-
 func reset_positions_and_start(is_overtime: bool = false) -> void:
 	game_timer.set_paused(true)
 
@@ -101,3 +99,7 @@ func reset_positions_and_start(is_overtime: bool = false) -> void:
 
 	await get_tree().create_timer(0.6).timeout
 	hud.hide_message()
+
+
+func _on_hud_unpause_game() -> void:
+	toggle_pause()

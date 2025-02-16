@@ -52,3 +52,7 @@ func _on_duck_collided_with_bubble(duck: Duck, bubble: Bubble) -> void:
 		enable_duck_input(true)
 	else:
 		hud.show_game_pause()
+
+
+func _on_hud_unpause_game() -> void:
+	toggle_pause()

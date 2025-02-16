@@ -95,5 +95,6 @@ position = Vector2(476, 313)
 
 [connection signal="bubble_collected" from="RightGoal" to="." method="_on_right_goal_bubble_collected"]
 [connection signal="start_game" from="Hud" to="." method="_on_hud_start_game"]
+[connection signal="unpause_game" from="Hud" to="." method="_on_hud_unpause_game"]
 [connection signal="bubble_collected" from="LeftGoal" to="." method="_on_left_goal_bubble_collected"]
 [connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
