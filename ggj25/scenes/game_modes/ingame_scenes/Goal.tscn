@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bioxevgxmkxd5"]
 
-[ext_resource type="Script" path="res://scripts/goal.gd" id="1_h841x"]
+[ext_resource type="Script" path="res://scripts/game_mode/ingame_scripts/goal.gd" id="1_h841x"]
 [ext_resource type="Texture2D" uid="uid://yynoten0w6hw" path="res://sprites/Plughole.png" id="2_px0qg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5uvum"]
