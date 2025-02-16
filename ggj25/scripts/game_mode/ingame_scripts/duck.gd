@@ -235,4 +235,4 @@ func die_and_flash():
 		sprite.visible = true
 	
 func revive():
-	sprite.material.set_shader_parameter("body_colour", Constants.DUCK_COLOURS[player_id]) 
+	init_colors()
