@@ -21,10 +21,10 @@ void fragment() {
 	COLOR = mix(color, line_color, outline - color.a);
 
 	// Colour body
-	if (texture(TEXTURE, UV).a != 0.){
+	if (texture(TEXTURE, UV).a == 1.) {
 		vec4 main_texture = texture(TEXTURE, UV);
 		vec4 final_output = main_texture;
 		final_output.rgb = mix((main_texture.rgb*body_colour.rgb), (main_texture.rgb*body_colour.rgb), 1);
 		COLOR = final_output;
-		}
+	}
 }
