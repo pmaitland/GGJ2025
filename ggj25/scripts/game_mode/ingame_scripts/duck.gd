@@ -53,7 +53,7 @@ func init_colors() -> void:
 	
 func _ready() -> void:
 	if !PlayerManager.is_joined(player_id):
-		visible = false
+		queue_free()
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
 	for _i in blow_animations.get_children():
 		_i.modulate = Constants.DUCK_COLOURS[player_id]
@@ -63,7 +63,7 @@ func _ready() -> void:
 func set_team_id(_team_id) -> void:
 	team_id = _team_id
 	init_colors()
-	print("Duck {player_id} assigned to team id: {team_id}".format({"player_id":player_id, "team_id":team_id}))
+	print("{name} assigned to team id: {team_id}".format({"name": PlayerManager.get_player_name(player_id), "team_id":team_id}))
 	
 func with_deadzone(vector: Vector2, deadzone: float = 0.3) -> Vector2:
 	if abs(vector.length()) < deadzone:
@@ -187,9 +187,13 @@ func blow() -> void:
 		if blow_hitbox.is_colliding():
 			for i in range(blow_hitbox.get_collision_count()):
 				var hit = blow_hitbox.get_collider(i)
-				if "name" in hit:
-					pass
-				if hit and hit.has_method("blow"):
+				if not hit:
+					continue
+					
+				if hit.has_method("can_be_blown_by") and not hit.call("can_be_blown_by", player_id):
+					continue
+				
+				if hit.has_method("blow"):
 					hit_bubble = true
 					hit.call("blow", global_transform, BLOW_FORCE)
 	

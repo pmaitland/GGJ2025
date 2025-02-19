@@ -8,6 +8,9 @@ var team_assignments: Array = Utils.create_array(SUPPORTED_PLAYERS, -1)
 var button_held_time: Array = Utils.create_array(SUPPORTED_PLAYERS, 0.0)
 var _joining_enabled := true
 
+signal player_joined
+signal player_left
+
 
 func _ready() -> void:
 	joined_devices[0] = true  # Player 1 starts joined
@@ -52,7 +55,7 @@ func _track_held_time(device_id, action: StringName, delta: float) -> void:
 
 ## Returns a list of joined player_ids
 func get_joined_players() -> Array[int]:
-	var result = []
+	var result: Array[int] = []
 	for i in range(joined_devices.size()):
 		if is_joined(i):
 			result.append(i)
@@ -61,12 +64,14 @@ func get_joined_players() -> Array[int]:
 
 func _join(device_id: int) -> void:
 	print("%s joined!" % get_player_name(device_id))
+	player_joined.emit(device_id)
 	joined_devices[device_id] = true
 	button_held_time[device_id] = 0
 
 
 func _unjoin(device_id: int) -> void:
 	print("%s left!" % get_player_name(device_id))
+	player_left.emit(device_id)
 	joined_devices[device_id] = false
 	button_held_time[device_id] = 0
 

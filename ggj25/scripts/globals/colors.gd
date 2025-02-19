@@ -10,4 +10,6 @@ const DUCK_COLOURS = [
 const TEAM_COLOURS = [
 	Color8(239, 153, 56), # Orange
 	Color8(161, 118, 219), # Purple
+	Color8(3, 194, 252), # Cyan
+	Color8(44, 242, 67), # Lime
 ]

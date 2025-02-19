@@ -28,12 +28,12 @@ position = Vector2(472, 296)
 
 [node name="RightGoal" parent="." instance=ExtResource("5_gqmha")]
 position = Vector2(907, 269)
+team_id = 1
 
 [node name="Hud" parent="." instance=ExtResource("6_txncv")]
 
 [node name="LeftGoal" parent="." instance=ExtResource("5_gqmha")]
 position = Vector2(64, 269)
-team_id = 1
 
 [node name="duck2" parent="." instance=ExtResource("3_18h01")]
 position = Vector2(784, 391)

@@ -70,6 +70,11 @@ layout_mode = 2
 theme = ExtResource("4_gfu24")
 text = "Dodge Bubball"
 
+[node name="Game3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_gfu24")
+text = "Dodge Bubball (FFA)"
+
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -95,4 +100,5 @@ bus = &"Music"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game1" to="." method="_on_game_1_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game2" to="." method="_on_game_2_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game2" to="." method="_on_game_2_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Game3" to="." method="_on_game_3_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

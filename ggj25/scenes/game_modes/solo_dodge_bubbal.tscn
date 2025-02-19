@@ -1,0 +1,104 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxllepxsbp65p"]
+
+[ext_resource type="Script" path="res://scripts/game_mode/solo_dodge_bubbal.gd" id="1_iikp0"]
+[ext_resource type="PackedScene" uid="uid://b4j1cmrmcuhvm" path="res://scenes/game_modes/ingame_scenes/background.tscn" id="2_4rl2y"]
+[ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/game_modes/ingame_scenes/duck.tscn" id="3_py6vm"]
+[ext_resource type="PackedScene" uid="uid://crq1dv00bhbu4" path="res://scenes/ui/Bubball_HUD.tscn" id="5_x8klu"]
+[ext_resource type="AudioStream" uid="uid://ob8hhxoeng52" path="res://sounds/bathtime.wav" id="6_4cm4c"]
+[ext_resource type="PackedScene" uid="uid://bqxe56iguvs7r" path="res://scenes/game_modes/ingame_scenes/BubbleSpawner.tscn" id="7_l6y2h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ev84h"]
+distance = 30.25
+
+[node name="SoloDodgeBubbal" type="Node2D"]
+position = Vector2(102, 58)
+script = ExtResource("1_iikp0")
+TEAMS_ENABLED = false
+
+[node name="Background" parent="." instance=ExtResource("2_4rl2y")]
+position = Vector2(477, 263)
+
+[node name="player1" parent="." instance=ExtResource("3_py6vm")]
+position = Vector2(102, 43)
+
+[node name="Hud" parent="." instance=ExtResource("5_x8klu")]
+game_mode = 1
+
+[node name="player2" parent="." instance=ExtResource("3_py6vm")]
+position = Vector2(974, 517)
+player_id = 1
+
+[node name="WorldBorder2" type="StaticBody2D" parent="."]
+position = Vector2(507, 620)
+scale = Vector2(-1, -1)
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder2"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+position = Vector2(608, -88)
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="WorldBorder4" type="StaticBody2D" parent="."]
+position = Vector2(1083, 221)
+rotation = 1.5708
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder4"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="WorldBorder3" type="StaticBody2D" parent="."]
+position = Vector2(-133, 250)
+rotation = 1.5708
+scale = Vector2(-1, -1)
+collision_layer = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder3"]
+rotation = -3.14159
+shape = SubResource("WorldBoundaryShape2D_ev84h")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4cm4c")
+volume_db = -10.0
+bus = &"Music"
+
+[node name="player3" parent="." instance=ExtResource("3_py6vm")]
+position = Vector2(94, 511)
+player_id = 2
+
+[node name="player4" parent="." instance=ExtResource("3_py6vm")]
+position = Vector2(988, 17)
+player_id = 3
+
+[node name="GameTimer" type="Timer" parent="."]
+
+[node name="BubbleSpawner1" parent="." instance=ExtResource("7_l6y2h")]
+position = Vector2(187, 119)
+player_id = 0
+
+[node name="BubbleSpawner2" parent="." instance=ExtResource("7_l6y2h")]
+position = Vector2(901, 450)
+player_id = 1
+
+[node name="BubbleSpawner3" parent="." instance=ExtResource("7_l6y2h")]
+position = Vector2(194, 445)
+player_id = 2
+
+[node name="BubbleSpawner4" parent="." instance=ExtResource("7_l6y2h")]
+position = Vector2(899, 92)
+player_id = 3
+
+[connection signal="collided_with_bubble" from="player1" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="start_game" from="Hud" to="." method="_on_hud_start_game"]
+[connection signal="unpause_game" from="Hud" to="." method="_on_hud_unpause_game"]
+[connection signal="collided_with_bubble" from="player2" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="collided_with_bubble" from="player3" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="collided_with_bubble" from="player4" to="." method="_on_duck_collided_with_bubble"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
