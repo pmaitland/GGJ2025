@@ -55,7 +55,7 @@ func _track_held_time(device_id, action: StringName, delta: float) -> void:
 
 ## Returns a list of joined player_ids
 func get_joined_players() -> Array[int]:
-	var result = []
+	var result: Array[int] = []
 	for i in range(joined_devices.size()):
 		if is_joined(i):
 			result.append(i)

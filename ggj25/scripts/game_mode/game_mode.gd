@@ -84,7 +84,7 @@ func _process(delta: float) -> void:
 			toggle_pause()
 		
 		# Update HUD scores
-		if hud and scores.size() == 2:
+		if hud:
 			update_scoreboard()
 			
 		# Update HUD game timer
@@ -194,7 +194,7 @@ func get_team(player_id: int) -> int:
 
 
 func get_players(team_id: int) -> Array[int]:
-	var result = []
+	var result: Array[int] = []
 	for player_id in teams:
 		if teams[player_id] == team_id:
 			result.append(player_id)

@@ -1,6 +1,6 @@
 extends GameMode
 
-@onready var bubble_spawner: BubbleSpawner = $BubbleSpawner
+var spawners: Array[BubbleSpawner]
 
 
 func _on_hud_start_game() -> void:
@@ -11,7 +11,16 @@ func _on_hud_start_game() -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	# Add game specific code here...
+	
+	var joined_players = PlayerManager.get_joined_players()
+	for spawner_node in find_children("*", "BubbleSpawner"):
+		var bubble_spawner = spawner_node as BubbleSpawner
+		if not joined_players.has(bubble_spawner.player_id):
+			bubble_spawner.queue_free()
+			continue
+		spawners.append(bubble_spawner)
+	
+	respawn_bubbles()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,14 +38,30 @@ func on_score():
 		if duck != null:
 			duck.goal_scored()
 	await get_tree().create_timer(1.0).timeout
-	bubbles = [bubble_spawner.spawn_bubble()]
+	respawn_bubbles()
+
+
+func respawn_bubbles():
+	for bubble in bubbles:
+		bubble.queue_free()
+	
+	bubbles = []
+	for spawner in spawners:
+		bubbles.append(spawner.spawn_bubble())
 
 
 func _on_duck_collided_with_bubble(duck: Duck, bubble: Bubble) -> void:
-	var team_id = bubble.team_id
-	add_score(team_id)
-	hud.show_scores_message(get_team_name(team_id))
+	var player_id = bubble.player_id
+	if duck.player_id == player_id:
+		return
+	
+	add_score(player_id)
+	hud.show_scores_message(get_team_name(player_id))
 	bubble.pop()
+	
+	for other_bubble in bubbles:
+		other_bubble.velocity = Vector2.ZERO
+	
 	on_score()
 
 	enable_duck_input(false)

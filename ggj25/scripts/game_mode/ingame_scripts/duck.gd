@@ -53,7 +53,7 @@ func init_colors() -> void:
 	
 func _ready() -> void:
 	if !PlayerManager.is_joined(player_id):
-		visible = false
+		queue_free()
 	print(player_id, Input.get_joy_info(player_id), Input.get_joy_name(player_id))
 	for _i in blow_animations.get_children():
 		_i.modulate = Constants.DUCK_COLOURS[player_id]
@@ -187,9 +187,13 @@ func blow() -> void:
 		if blow_hitbox.is_colliding():
 			for i in range(blow_hitbox.get_collision_count()):
 				var hit = blow_hitbox.get_collider(i)
-				if "name" in hit:
-					pass
-				if hit and hit.has_method("blow"):
+				if not hit:
+					continue
+					
+				if hit.has_method("can_be_blown_by") and not hit.call("can_be_blown_by", player_id):
+					continue
+				
+				if hit.has_method("blow"):
 					hit_bubble = true
 					hit.call("blow", global_transform, BLOW_FORCE)
 	
