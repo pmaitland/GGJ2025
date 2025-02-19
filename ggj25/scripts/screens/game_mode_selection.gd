@@ -21,6 +21,9 @@ func _on_game_2_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game_modes/dodge_bubbal.tscn")
 
 
+func _on_game_3_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/game_modes/solo_dodge_bubbal.tscn")
+
 
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/screens/MainScreen.tscn")
