@@ -8,9 +8,12 @@ enum SPAWNER_TYPE { MANUAL, TIMER }
 @export var spawn_mode: SPAWNER_TYPE = SPAWNER_TYPE.MANUAL
 @export var spawn_delay: float = 10
 
+@export var team_id: int = -1
+
 
 func spawn_bubble() -> Bubble:
 	var bubble: Bubble = bubble_scene.instantiate()
+	bubble.set_team_id(team_id)
 	add_child(bubble)
 	return bubble
 

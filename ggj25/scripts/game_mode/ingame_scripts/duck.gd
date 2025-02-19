@@ -63,7 +63,7 @@ func _ready() -> void:
 func set_team_id(_team_id) -> void:
 	team_id = _team_id
 	init_colors()
-	print("Duck {player_id} assigned to team id: {team_id}".format({"player_id":player_id, "team_id":team_id}))
+	print("{name} assigned to team id: {team_id}".format({"name": PlayerManager.get_player_name(player_id), "team_id":team_id}))
 	
 func with_deadzone(vector: Vector2, deadzone: float = 0.3) -> Vector2:
 	if abs(vector.length()) < deadzone:

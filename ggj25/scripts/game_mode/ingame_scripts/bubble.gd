@@ -3,16 +3,24 @@ class_name Bubble extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var pop_sound: AudioStreamPlayer2D = $PopSound
 
+@export var team_id: int = -1
+
 var paused = false
 
 const FRICTION = 0.985
 const BOUNCE_SCALE = 0.8
+const DEFAULT_COLOUR = Color8(227, 161, 218)
 
 func set_paused(p: bool):
 	paused = p
 
+
+func set_team_id(team_id: int) -> void:
+	self.team_id = team_id
+
+
 func _ready() -> void:
-	animated_sprite_2d.modulate = Color8(227, 161, 218)
+	animated_sprite_2d.modulate = DEFAULT_COLOUR
 	animated_sprite_2d.play("default")
 
 

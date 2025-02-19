@@ -4,12 +4,15 @@ class_name GameMode extends Node2D
 @onready var game_timer: Timer = $GameTimer
 
 @export var GAME_TIME = 60
-@export var OVERTIME_ENABLED = true
+@export var OVERTIME_ENABLED: bool = true
+@export var TEAMS_ENABLED: bool = true
+@export var TEAM_COUNT: int = 2
 
 var ducks: Array[Duck]
 var initial_positions: Array[Vector2]
 var bubbles: Array[Bubble]
-var scores: Array[int]
+var scores: Array[int]  # key: team_id, value: score
+var teams: Dictionary  # key: player_id, value: team_id
 
 var started = false
 var paused = false
@@ -23,10 +26,12 @@ const TEAM_ID_GAME_TIED = -1
 
 
 func _ready() -> void:
+	connect("player_joined", _on_player_joined)
+	connect("player_left", _on_player_left)
+	
 	find_ducks()
 	find_bubbles()
 	enable_duck_input(false)
-	init_team_scores()
 	init_teams()
 	if game_timer:
 		game_timer.wait_time = GAME_TIME
@@ -36,24 +41,41 @@ func _ready() -> void:
 		hud.setup_game()
 
 
-func init_team_scores(no_of_teams: int = 2):
+func get_team_count() -> int:
+	if is_team_game():
+		return TEAM_COUNT
+	return ducks.size()
+
+
+func _on_player_joined(player_id: int) -> void:
+	if not is_team_game():
+		init_teams()
+
+
+func _on_player_left(player_id: int) -> void:
+	if not is_team_game():
+		init_teams()
+
+
+func init_team_scores():
 	scores = []
-	scores.resize(no_of_teams)
+	scores.resize(get_team_count())
 	scores.fill(0)
 	
 	
-func init_teams(no_of_teams:int = 2) -> void: 
-	var available_teams = Array(PackedInt32Array(range(no_of_teams)))
-	for duck in ducks:
-		var duck_inx = ducks.find(duck)
-		for no in no_of_teams:
-			if no in available_teams and duck_inx % (no + 1) == 0:
-				duck.set_team_id(no)
-				#remove team from available teams 
-				available_teams.remove_at(available_teams.find(no))
-				if not len(available_teams):
-					# reset available teams if used up
-					available_teams = Array(PackedInt32Array(range(no_of_teams)))
+func init_teams() -> void: 
+	init_team_scores()
+	var no_of_teams = get_team_count()
+	
+	teams = {}
+	
+	# TODO: allow players to choose team instead of auto assign
+	var next_team_id = 0
+	for i in range(ducks.size()):
+		teams[ducks[i].player_id] = next_team_id
+		ducks[i].set_team_id(next_team_id)
+		next_team_id = (next_team_id + 1) % no_of_teams
+
 
 func _process(delta: float) -> void:
 	if started:
@@ -68,7 +90,6 @@ func _process(delta: float) -> void:
 		# Update HUD game timer
 		if hud and game_timer:
 			hud.set_timer(format_timer(game_timer.time_left))
-
 
 
 func update_scoreboard():
@@ -168,12 +189,20 @@ func format_timer(time_left: float) -> String:
 	return str(ceil(time_left))
 
 
-# TODO: disconnect device id from team id
 func get_team(player_id: int) -> int:
-	return ducks[player_id].team_id
+	return teams[player_id]
+
+
+func get_players(team_id: int) -> Array[int]:
+	var result = []
+	for player_id in teams:
+		if teams[player_id] == team_id:
+			result.append(player_id)
+	return result
 
 
 func get_opposing_team(player_id: int) -> int:
+	assert(is_team_game(), "Can't get opposing team when not team game")
 	assert(scores.size() == 2, "Can't get opposing team when not exactly 2 teams")
 	return (get_team(player_id) + 1) % 2
 
@@ -191,14 +220,17 @@ func add_score(team_id: int, score: int = 1) -> void:
 
 
 func is_team_game() -> bool:
-	return scores.size() < ducks.size()
+	return TEAMS_ENABLED
 
 
 func get_team_name(team_id: int) -> String:
 	if !validate_team_id(team_id):
 		return "Missing team name"
 	
-	if scores.size() > 2:
+	if not is_team_game():
+		return PlayerManager.get_player_name(get_players(team_id)[0])
+	
+	if get_team_count() > 2:
 		push_error("Team names not set for >2 teams")
 		return "Missing team name"
 
