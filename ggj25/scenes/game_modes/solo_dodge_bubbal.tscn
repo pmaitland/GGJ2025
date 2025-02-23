@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxllepxsbp65p"]
+[gd_scene load_steps=8 format=3 uid="uid://51d84ol8k87a"]
 
 [ext_resource type="Script" path="res://scripts/game_mode/solo_dodge_bubbal.gd" id="1_iikp0"]
 [ext_resource type="PackedScene" uid="uid://b4j1cmrmcuhvm" path="res://scenes/game_modes/ingame_scenes/background.tscn" id="2_4rl2y"]
@@ -13,6 +13,7 @@ distance = 30.25
 [node name="SoloDodgeBubbal" type="Node2D"]
 position = Vector2(102, 58)
 script = ExtResource("1_iikp0")
+GAME_TIME = 10
 TEAMS_ENABLED = false
 
 [node name="Background" parent="." instance=ExtResource("2_4rl2y")]
@@ -22,7 +23,6 @@ position = Vector2(477, 263)
 position = Vector2(102, 43)
 
 [node name="Hud" parent="." instance=ExtResource("5_x8klu")]
-game_mode = 1
 
 [node name="player2" parent="." instance=ExtResource("3_py6vm")]
 position = Vector2(974, 517)
