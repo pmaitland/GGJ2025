@@ -25,7 +25,6 @@ position = Vector2(230, 100)
 position = Vector2(476, 312)
 
 [node name="Hud" parent="." instance=ExtResource("5_e11kd")]
-game_mode = 1
 
 [node name="duck2" parent="." instance=ExtResource("3_guwru")]
 position = Vector2(920, 329)
