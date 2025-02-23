@@ -13,7 +13,6 @@ distance = 30.25
 [node name="SoloDodgeBubbal" type="Node2D"]
 position = Vector2(102, 58)
 script = ExtResource("1_iikp0")
-GAME_TIME = 10
 TEAMS_ENABLED = false
 
 [node name="Background" parent="." instance=ExtResource("2_4rl2y")]
