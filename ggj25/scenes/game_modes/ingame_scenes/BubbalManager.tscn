@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://chgxtmrstsuwx"]
 
-[ext_resource type="Script" path="res://scripts/game_mode/bubball.gd" id="1_pnpim"]
+[ext_resource type="Script" uid="uid://bthlng7pqxw5a" path="res://scripts/game_mode/bubball.gd" id="1_pnpim"]
 
 [node name="BubbalManager" type="Node"]
 script = ExtResource("1_pnpim")

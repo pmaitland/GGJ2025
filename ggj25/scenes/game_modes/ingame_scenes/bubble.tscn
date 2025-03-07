@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1jn5x64l5q8v"]
 
-[ext_resource type="Script" path="res://scripts/game_mode/ingame_scripts/bubble.gd" id="1_o006w"]
+[ext_resource type="Script" uid="uid://cjrocvlt0wfm7" path="res://scripts/game_mode/ingame_scripts/bubble.gd" id="1_o006w"]
 [ext_resource type="SpriteFrames" uid="uid://dj3h26rtaimqq" path="res://sprites/bubble/bubble.tres" id="2_jth72"]
 [ext_resource type="AudioStream" uid="uid://bfqltrpisof5d" path="res://sounds/pop.wav" id="3_h3khm"]
 

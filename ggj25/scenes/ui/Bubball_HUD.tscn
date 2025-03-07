@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://crq1dv00bhbu4"]
 
-[ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_b2j7g"]
+[ext_resource type="Script" uid="uid://dqjctllufth4q" path="res://scripts/ui/hud.gd" id="1_b2j7g"]
 [ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_01w2v"]
 [ext_resource type="AudioStream" uid="uid://doxtltyi27w0n" path="res://sounds/quack.wav" id="3_2tmm1"]
 [ext_resource type="PackedScene" uid="uid://vyu8ke6fpyjg" path="res://scenes/ui/ControlsHUD.tscn" id="3_j4cyy"]

@@ -186,7 +186,7 @@ func format_timer(time_left: float) -> String:
 	if time_left < 10:
 		return str(snappedf(time_left, 0.1))
 	
-	return str(ceil(time_left))
+	return str(int(ceil(time_left)))
 
 
 func get_team(player_id: int) -> int:

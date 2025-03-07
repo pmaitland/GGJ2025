@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://uw7eanu26b61"]
 
-[ext_resource type="Script" path="res://scripts/game_mode/ingame_scripts/obstacle.gd" id="1_0rpod"]
+[ext_resource type="Script" uid="uid://d132d5ddjwa25" path="res://scripts/game_mode/ingame_scripts/obstacle.gd" id="1_0rpod"]
 [ext_resource type="Texture2D" uid="uid://c80qql6sxnne1" path="res://sprites/obstacle.png" id="2_8uo6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_winyo"]

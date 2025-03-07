@@ -1,7 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjar0viraaigf"]
 
-[ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="2_ikigs"]
-[ext_resource type="Script" path="res://scripts/screens/settings_screen.gd" id="1_x0e36"]
+[ext_resource type="Script" uid="uid://cym0m55h1ibt5" path="res://scripts/screens/settings_screen.gd" id="1_x0e36"]
 [ext_resource type="PackedScene" uid="uid://boydmqf5ce1qp" path="res://scenes/ui/SettingsHUD.tscn" id="2_220dy"]
 
 [node name="SettingsScreen" type="Control"]
