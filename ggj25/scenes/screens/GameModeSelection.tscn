@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://olhc7phtfuy4"]
 
-[ext_resource type="Script" path="res://scripts/screens/game_mode_selection.gd" id="1_b3e5x"]
+[ext_resource type="Script" uid="uid://x21hrodt8nqp" path="res://scripts/screens/game_mode_selection.gd" id="1_b3e5x"]
 [ext_resource type="Texture2D" uid="uid://cgoccqpnsqsib" path="res://sprites/UI/bubball-screenshot.png" id="2_eegnf"]
 [ext_resource type="Texture2D" uid="uid://bb83b42m813bh" path="res://sprites/UI/dodge_bubball_screenshot.png" id="3_f814k"]
 [ext_resource type="Theme" uid="uid://l5o2h7lbhoux" path="res://default_theme.tres" id="4_gfu24"]

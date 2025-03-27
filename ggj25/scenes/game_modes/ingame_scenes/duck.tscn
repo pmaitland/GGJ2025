@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://bnfisykkl2cb6"]
 
-[ext_resource type="Script" path="res://scripts/game_mode/ingame_scripts/duck.gd" id="1_x1n4u"]
+[ext_resource type="Script" uid="uid://cbxrfs3mdjj83" path="res://scripts/game_mode/ingame_scripts/duck.gd" id="1_x1n4u"]
 [ext_resource type="Texture2D" uid="uid://cc8b34nnsxb8j" path="res://sprites/duck/duck0.png" id="2_hmvlq"]
 [ext_resource type="Texture2D" uid="uid://bg03fuc1dpl2k" path="res://sprites/duck/duck1.png" id="3_n6wtr"]
 [ext_resource type="Texture2D" uid="uid://h4qs1b1gs371" path="res://sprites/duck/duck2.png" id="4_p8rtf"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://5q81t0e5ahkx" path="res://sprites/duck/duck5.png" id="7_5b0ea"]
 [ext_resource type="Texture2D" uid="uid://bh03b45b1ltkb" path="res://sprites/duck/duck6.png" id="8_x2q5v"]
 [ext_resource type="Texture2D" uid="uid://n2svyvflvb2q" path="res://sprites/duck/duck7.png" id="9_0sns0"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="10_bp0v7"]
+[ext_resource type="Shader" uid="uid://cm0jbsrhhimhs" path="res://shaders/outline.gdshader" id="10_bp0v7"]
 [ext_resource type="AudioStream" uid="uid://doxtltyi27w0n" path="res://sounds/quack.wav" id="10_qaxuo"]
 [ext_resource type="SpriteFrames" uid="uid://w1r8inlqhcm4" path="res://sprites/blow/blow.tres" id="11_g7p3h"]
 [ext_resource type="SpriteFrames" uid="uid://c8ygvrw21qg66" path="res://sprites/dash/dash.tres" id="12_vcajh"]

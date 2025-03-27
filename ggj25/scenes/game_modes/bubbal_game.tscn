@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bxcpb31qgji08"]
 
-[ext_resource type="Script" path="res://scripts/game_mode/bubball.gd" id="1_5qfpv"]
+[ext_resource type="Script" uid="uid://bthlng7pqxw5a" path="res://scripts/game_mode/bubball.gd" id="1_5qfpv"]
 [ext_resource type="PackedScene" uid="uid://b4j1cmrmcuhvm" path="res://scenes/game_modes/ingame_scenes/background.tscn" id="2_pp47a"]
 [ext_resource type="PackedScene" uid="uid://bnfisykkl2cb6" path="res://scenes/game_modes/ingame_scenes/duck.tscn" id="3_18h01"]
 [ext_resource type="PackedScene" uid="uid://c1jn5x64l5q8v" path="res://scenes/game_modes/ingame_scenes/bubble.tscn" id="4_4xxl7"]

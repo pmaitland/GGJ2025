@@ -55,7 +55,7 @@ func start_overtime():
 
 func format_timer(time_left: float):
 	if overtime:
-		return super.format_timer(floor(overtime_timer))
+		return super.format_timer(int(floor(overtime_timer)))
 	return super.format_timer(time_left)
 
 
